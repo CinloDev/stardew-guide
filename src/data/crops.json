@@ -1,0 +1,26 @@
+[
+  {
+    "id": "cauliflower",
+    "name": "Cauliflower",
+    "season": ["spring"],
+    "source": "Pierre's Store"
+  },
+  {
+    "id": "blueberry",
+    "name": "Blueberry",
+    "season": ["summer"],
+    "source": "Pierre's Store"
+  },
+  {
+    "id": "pumpkin",
+    "name": "Pumpkin",
+    "season": ["fall"],
+    "source": "Pierre's Store"
+  },
+  {
+    "id": "winter-seeds",
+    "name": "Winter Seeds",
+    "season": ["winter"],
+    "source": "Crafting"
+  }
+]

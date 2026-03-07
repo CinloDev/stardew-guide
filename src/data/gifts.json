@@ -1,0 +1,17 @@
+[
+  {
+    "villagerId": "abigail",
+    "loved": ["Amethyst", "Pumpkin", "Spicy Eel"],
+    "liked": ["Quartz", "Fairy Rose"]
+  },
+  {
+    "villagerId": "sebastian",
+    "loved": ["Frozen Tear", "Sashimi", "Obsidian"],
+    "liked": ["Coffee", "Quartz"]
+  },
+  {
+    "villagerId": "leah",
+    "loved": ["Goat Cheese", "Salad", "Wine"],
+    "liked": ["Vegetables", "Driftwood"]
+  }
+]

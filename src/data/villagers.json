@@ -1,0 +1,42 @@
+[
+  {
+    "id": "abigail",
+    "name": "Abigail",
+    "birthday": "Fall 13",
+    "lovedGifts": ["Amethyst", "Pumpkin", "Spicy Eel"],
+    "likedGifts": ["Quartz", "Fairy Rose"],
+    "image": "/images/villagers/abigail.png"
+  },
+  {
+    "id": "sebastian",
+    "name": "Sebastian",
+    "birthday": "Winter 10",
+    "lovedGifts": ["Frozen Tear", "Sashimi", "Obsidian"],
+    "likedGifts": ["Quartz", "Coffee"],
+    "image": "/images/villagers/sebastian.png"
+  },
+  {
+    "id": "leah",
+    "name": "Leah",
+    "birthday": "Winter 23",
+    "lovedGifts": ["Goat Cheese", "Salad", "Wine"],
+    "likedGifts": ["Driftwood", "Vegetables"],
+    "image": "/images/villagers/leah.png"
+  },
+  {
+    "id": "harvey",
+    "name": "Harvey",
+    "birthday": "Winter 14",
+    "lovedGifts": ["Coffee", "Pickles", "Truffle Oil"],
+    "likedGifts": ["Fruit", "Wine"],
+    "image": "/images/villagers/harvey.png"
+  },
+  {
+    "id": "penny",
+    "name": "Penny",
+    "birthday": "Fall 2",
+    "lovedGifts": ["Melon", "Poppy", "Roots Platter"],
+    "likedGifts": ["Milk", "Dandelion"],
+    "image": "/images/villagers/penny.png"
+  }
+]

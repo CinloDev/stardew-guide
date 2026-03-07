@@ -1,0 +1,98 @@
+[
+  {
+    "id": "dwarf-scroll-1",
+    "name": "Dwarf Scroll I",
+    "category": "artifact",
+    "locationHint": "Mines floors 1-40",
+    "description": "Ancient dwarf writing found in the early mine levels.",
+    "image": "/images/museum/dwarf-scroll-1.png"
+  },
+  {
+    "id": "chipped-amphora",
+    "name": "Chipped Amphora",
+    "category": "artifact",
+    "locationHint": "Artifact spots in town and forest",
+    "description": "A delicate clay container from an old civilization.",
+    "image": "/images/museum/chipped-amphora.png"
+  },
+  {
+    "id": "elvish-jewelry",
+    "name": "Elvish Jewelry",
+    "category": "artifact",
+    "locationHint": "Fishing treasure chests and artifact spots",
+    "description": "A tiny iridescent jewel from a forgotten era.",
+    "image": "/images/museum/elvish-jewelry.png"
+  },
+  {
+    "id": "rusty-spoon",
+    "name": "Rusty Spoon",
+    "category": "artifact",
+    "locationHint": "Artifact spots in town",
+    "description": "A spoon used long ago by early settlers.",
+    "image": "/images/museum/rusty-spoon.png"
+  },
+  {
+    "id": "quartz",
+    "name": "Quartz",
+    "category": "mineral",
+    "locationHint": "Mines and geodes",
+    "description": "A clear crystal often found while mining.",
+    "image": "/images/museum/quartz.png"
+  },
+  {
+    "id": "fire-quartz",
+    "name": "Fire Quartz",
+    "category": "mineral",
+    "locationHint": "Mines floors 80+",
+    "description": "A glowing mineral with warm inner light.",
+    "image": "/images/museum/fire-quartz.png"
+  },
+  {
+    "id": "frozen-tear",
+    "name": "Frozen Tear",
+    "category": "mineral",
+    "locationHint": "Mines floors 40-79",
+    "description": "A mineral that feels cold to the touch.",
+    "image": "/images/museum/frozen-tear.png"
+  },
+  {
+    "id": "earth-crystal",
+    "name": "Earth Crystal",
+    "category": "mineral",
+    "locationHint": "Mines floors 1-39",
+    "description": "A crystal infused with earthy energy.",
+    "image": "/images/museum/earth-crystal.png"
+  },
+  {
+    "id": "jade",
+    "name": "Jade",
+    "category": "mineral",
+    "locationHint": "Mines and geodes",
+    "description": "A smooth green gem used in forging and gifting.",
+    "image": "/images/museum/jade.png"
+  },
+  {
+    "id": "topaz",
+    "name": "Topaz",
+    "category": "mineral",
+    "locationHint": "Mines and panning",
+    "description": "A bright gem that sparkles in sunlight.",
+    "image": "/images/museum/topaz.png"
+  },
+  {
+    "id": "diamond",
+    "name": "Diamond",
+    "category": "mineral",
+    "locationHint": "Mines floor 50+ and gem nodes",
+    "description": "A rare and valuable crystal.",
+    "image": "/images/museum/diamond.png"
+  },
+  {
+    "id": "star-shards",
+    "name": "Star Shards",
+    "category": "mineral",
+    "locationHint": "Geodes and mine nodes",
+    "description": "A mysterious purple mineral believed to hold starlight.",
+    "image": "/images/museum/star-shards.png"
+  }
+]

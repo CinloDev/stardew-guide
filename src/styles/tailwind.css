@@ -1,0 +1,9 @@
+@layer components {
+  .panel {
+    @apply rounded-2xl border border-amber-900/15 bg-white/90 p-4 shadow-sm;
+  }
+
+  .section-title {
+    @apply text-2xl font-semibold text-amber-950;
+  }
+}

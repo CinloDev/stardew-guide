@@ -1,0 +1,26 @@
+[
+  {
+    "id": "farmer-lunch",
+    "name": "Farmer's Lunch",
+    "ingredients": ["Omelet", "Parsnip"],
+    "source": "Learned from Queen of Sauce",
+    "healthBonus": 90,
+    "energyBonus": 200
+  },
+  {
+    "id": "pumpkin-soup",
+    "name": "Pumpkin Soup",
+    "ingredients": ["Pumpkin", "Milk"],
+    "source": "Friendship event with Robin",
+    "healthBonus": 60,
+    "energyBonus": 140
+  },
+  {
+    "id": "roots-platter",
+    "name": "Roots Platter",
+    "ingredients": ["Winter Root", "Cave Carrot"],
+    "source": "Reached Mining level 3",
+    "healthBonus": 60,
+    "energyBonus": 135
+  }
+]
