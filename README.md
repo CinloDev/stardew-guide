@@ -1,91 +1,193 @@
-# Stardew Guide
+# 🌾 Stardew Valley Guide
 
-Guia interactiva de Stardew Valley construida con Next.js (App Router), TypeScript y Tailwind.
+An interactive companion app for **Stardew Valley** players.
 
-La idea del proyecto es centralizar herramientas utiles para partida diaria:
-- seguimiento del museo,
-- guia de regalos para aldeanos,
-- recetas de cocina,
-- calendario estacional.
+Track museum progress, discover NPC gift preferences, browse cooking recipes and check seasonal events — all in one place.
 
-## Objetivo
+Designed as a **scalable frontend architecture project**, starting with static datasets and evolving toward a full backend implementation.
 
-Crear una aplicacion escalable y modular que empiece con datos en JSON y evolucionar a un backend real con Prisma + PostgreSQL, manteniendo buena arquitectura desde el inicio.
+---
 
-## Stack
+# 🚀 Live Demo
 
-- Next.js (App Router)
-- React + TypeScript
-- TailwindCSS
-- Zustand (estado global de progreso)
-- Biome (lint + format)
-- Prisma (preparado para futura integracion)
+https://stardewguide.vercel.app
 
-## Arquitectura
+---
 
-Estructura basada en features y separacion por responsabilidades:
+# ✨ Features
 
-- `src/app`: rutas y paginas
-- `src/components`: UI reutilizable (layout, ui, common)
-- `src/features`: logica y componentes por dominio
-- `src/data`: datasets iniciales del juego (JSON)
-- `src/store`: estado global con persistencia en localStorage
-- `src/types`: modelos TypeScript
-- `prisma/`: esquema para futura capa de datos
+* 📅 **Seasonal calendar** with festivals and events
+* 🎁 **NPC gift guide** and birthday tracker
+* 🏛️ **Interactive museum tracker**
+* 📖 **Cooking recipes database**
+* 💾 Progress saved using **localStorage**
+* 📱 Fully **responsive UI**
 
-## Funcionalidades actuales
+---
 
-1. Museum interactive tracker:
-estado persistente en `localStorage` (encontrado/donado) con interfaz modular.
-2. Villager gift guide:
-listado y busqueda por aldeano o regalo.
-3. Cooking recipes:
-vista base de recetas y utilidad para ordenarlas.
-4. Seasonal calendar:
-eventos iniciales por estacion.
+# 🧰 Tech Stack
 
-## Estado de datos
+* **Next.js (App Router)**
+* **React**
+* **TypeScript**
+* **TailwindCSS**
+* **Zustand** – global state management
+* **Biome** – linting and formatting
+* **Prisma** – database layer preparation
+* **Vercel** – deployment
 
-- Actualmente se usan archivos JSON en `src/data`.
-- Hay endpoint base en `src/app/api/progress/route.ts` para futura persistencia real.
-- `prisma/schema.prisma` ya incluye modelo inicial de progreso de usuario.
+---
 
-## Scripts utiles
+# 🧱 Project Architecture
 
-```bash
-npm run dev
-npm run build
-npm run start
-npm run lint
-npm run format
-npm run check
-npm run prisma:generate
-npm run prisma:migrate
-npm run generate:data
+The project follows a **feature-based architecture**, separating UI components, domain logic and datasets.
+
+src/
+│
+├── app/              → Next.js routes and pages
+├── components/       → reusable UI components
+├── features/         → domain logic and feature modules
+├── data/             → game datasets (JSON)
+├── store/            → global state (Zustand)
+├── types/            → TypeScript models
+│
+└── prisma/           → database schema for future backend
+
+This structure allows the application to **start simple with static data and scale to a full backend** without major refactoring.
+
+---
+
+# 📊 Data Strategy
+
+Current data sources:
+
+* Static **JSON datasets** located in `src/data`
+* User progress stored in **localStorage**
+
+The repository already includes:
+
+* an API route for progress handling
+* a Prisma schema
+
+This prepares the project for **future migration to PostgreSQL**.
+
+---
+
+# 🧪 Future Backend Integration
+
+Planned architecture evolution:
+
+Frontend (Next.js)
+⬇
+API Routes
+⬇
+Prisma ORM
+⬇
+PostgreSQL
+
+This ensures the current architecture remains compatible with a **full stack upgrade**.
+
+---
+
+# 🖥️ Local Development
+
+Install dependencies:
+
 ```
-
-## Desarrollo local
-
-1. Instalar dependencias:
-
-```bash
 npm install
 ```
 
-2. Ejecutar en desarrollo:
+Run the development server:
 
-```bash
+```
 npm run dev
 ```
 
-3. Abrir en navegador:
+Open:
 
-`http://localhost:3000`
+```
+http://localhost:3000
+```
 
-## Roadmap (proximas iteraciones)
+---
 
-1. Conectar progreso a PostgreSQL con Prisma.
-2. Completar datasets reales de Stardew Valley.
-3. Agregar autenticacion de usuario.
-4. Añadir tests (unitarios + integracion).
-5. Mejorar filtros, busquedas y vistas de detalle.
+# ⚙️ Available Scripts
+
+Development
+
+```
+npm run dev
+npm run build
+npm run start
+```
+
+Code quality
+
+```
+npm run lint
+npm run format
+npm run check
+```
+
+Database
+
+```
+npm run prisma:generate
+npm run prisma:migrate
+```
+
+Data generation
+
+```
+npm run generate:data
+```
+
+---
+
+# 🗺️ Roadmap
+
+Planned improvements:
+
+* Connect progress persistence to **PostgreSQL**
+* Complete **Stardew Valley datasets**
+* Add **user authentication**
+* Improve search and filtering
+* Add **unit and integration tests**
+* Crop planner tool
+* Mobile UX improvements
+* Mod compatibility
+
+---
+
+# 🎯 Project Goals
+
+This project was created to practice:
+
+* scalable frontend architecture
+* feature-based project structure
+* state management patterns
+* progressive backend integration
+* production-ready deployment
+
+---
+
+# 📷 Screenshots
+
+*(To be added)*
+
+Recommended structure:
+
+docs/
+calendar.png
+museum.png
+recipes.png
+
+---
+
+# 📜 License
+
+MIT
+
+---
+
+⭐ If you like the project, consider starring the repository.
