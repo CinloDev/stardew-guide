@@ -1,42 +1,550 @@
 [
-  {
-    "id": "abigail",
-    "name": "Abigail",
-    "birthday": "Fall 13",
-    "lovedGifts": ["Amethyst", "Pumpkin", "Spicy Eel"],
-    "likedGifts": ["Quartz", "Fairy Rose"],
-    "image": "/images/villagers/abigail.png"
-  },
-  {
-    "id": "sebastian",
-    "name": "Sebastian",
-    "birthday": "Winter 10",
-    "lovedGifts": ["Frozen Tear", "Sashimi", "Obsidian"],
-    "likedGifts": ["Quartz", "Coffee"],
-    "image": "/images/villagers/sebastian.png"
-  },
-  {
-    "id": "leah",
-    "name": "Leah",
-    "birthday": "Winter 23",
-    "lovedGifts": ["Goat Cheese", "Salad", "Wine"],
-    "likedGifts": ["Driftwood", "Vegetables"],
-    "image": "/images/villagers/leah.png"
-  },
-  {
-    "id": "harvey",
-    "name": "Harvey",
-    "birthday": "Winter 14",
-    "lovedGifts": ["Coffee", "Pickles", "Truffle Oil"],
-    "likedGifts": ["Fruit", "Wine"],
-    "image": "/images/villagers/harvey.png"
-  },
-  {
-    "id": "penny",
-    "name": "Penny",
-    "birthday": "Fall 2",
-    "lovedGifts": ["Melon", "Poppy", "Roots Platter"],
-    "likedGifts": ["Milk", "Dandelion"],
-    "image": "/images/villagers/penny.png"
-  }
+    {
+        "id": "kent",
+        "name": "Kent",
+        "birthday": "Spring 4",
+        "lovedGifts": [
+            "Fiddlehead Risotto",
+            "Roasted Hazelnuts"
+        ],
+        "likedGifts": [
+            "Eggs",
+            "Fruit"
+        ],
+        "image": "/images/villagers/kent.webp"
+    },
+    {
+        "id": "lewis",
+        "name": "Lewis",
+        "birthday": "Spring 7",
+        "lovedGifts": [
+            "Autumn's Bounty",
+            "Glazed Yams",
+            "Green Tea",
+            "Hot Pepper"
+        ],
+        "likedGifts": [
+            "Daffodil",
+            "Eggplant"
+        ],
+        "image": "/images/villagers/lewis.webp"
+    },
+    {
+        "id": "vincent",
+        "name": "Vincent",
+        "birthday": "Spring 10",
+        "lovedGifts": [
+            "Cranberry Candy",
+            "Grape",
+            "Pink Cake",
+            "Snail"
+        ],
+        "likedGifts": [
+            "Coconut",
+            "Daffodil"
+        ],
+        "image": "/images/villagers/vincent.webp"
+    },
+    {
+        "id": "haley",
+        "name": "Haley",
+        "birthday": "Spring 14",
+        "lovedGifts": [
+            "Coconut",
+            "Fruit Salad",
+            "Pink Cake",
+            "Sunflower"
+        ],
+        "likedGifts": [
+            "Daffodil",
+            "All Fruit"
+        ],
+        "image": "/images/villagers/haley.webp"
+    },
+    {
+        "id": "pam",
+        "name": "Pam",
+        "birthday": "Spring 18",
+        "lovedGifts": [
+            "Beer",
+            "Cactus Fruit",
+            "Glazed Yams",
+            "Mead",
+            "Parsnip",
+            "Pale Ale",
+            "Pepper Poppers"
+        ],
+        "likedGifts": [
+            "Daffodil",
+            "Eggs"
+        ],
+        "image": "/images/villagers/pam.webp"
+    },
+    {
+        "id": "shane",
+        "name": "Shane",
+        "birthday": "Spring 20",
+        "lovedGifts": [
+            "Beer",
+            "Hot Pepper",
+            "Pepper Poppers",
+            "Pizza"
+        ],
+        "likedGifts": [
+            "Eggs",
+            "Fruit"
+        ],
+        "image": "/images/villagers/shane.webp"
+    },
+    {
+        "id": "pierre",
+        "name": "Pierre",
+        "birthday": "Spring 26",
+        "lovedGifts": [
+            "Fried Calamari"
+        ],
+        "likedGifts": [
+            "Daffodil",
+            "Eggplant"
+        ],
+        "image": "/images/villagers/pierre.webp"
+    },
+    {
+        "id": "emily",
+        "name": "Emily",
+        "birthday": "Spring 27",
+        "lovedGifts": [
+            "Amethyst",
+            "Aquamarine",
+            "Cloth",
+            "Emerald",
+            "Jade",
+            "Ruby",
+            "Survival Burger",
+            "Topaz",
+            "Wool"
+        ],
+        "likedGifts": [
+            "Quartz",
+            "Daffodil"
+        ],
+        "image": "/images/villagers/emily.webp"
+    },
+    {
+        "id": "jas",
+        "name": "Jas",
+        "birthday": "Summer 4",
+        "lovedGifts": [
+            "Fairy Rose",
+            "Pink Cake",
+            "Plum Pudding"
+        ],
+        "likedGifts": [
+            "Coconut",
+            "Daffodil"
+        ],
+        "image": "/images/villagers/jas.webp"
+    },
+    {
+        "id": "gus",
+        "name": "Gus",
+        "birthday": "Summer 8",
+        "lovedGifts": [
+            "Diamond",
+            "Escargot",
+            "Fish Taco",
+            "Orange"
+        ],
+        "likedGifts": [
+            "Daffodil",
+            "Fruit"
+        ],
+        "image": "/images/villagers/gus.webp"
+    },
+    {
+        "id": "maru",
+        "name": "Maru",
+        "birthday": "Summer 10",
+        "lovedGifts": [
+            "Battery Pack",
+            "Cauliflower",
+            "Cheese Cauliflower",
+            "Diamond",
+            "Gold Bar",
+            "Iridium Bar",
+            "Pepper Poppers",
+            "Rhubarb Pie",
+            "Strawberry"
+        ],
+        "likedGifts": [
+            "Copper Bar",
+            "Iron Bar"
+        ],
+        "image": "/images/villagers/maru.webp"
+    },
+    {
+        "id": "alex",
+        "name": "Alex",
+        "birthday": "Summer 13",
+        "lovedGifts": [
+            "Complete Breakfast",
+            "Salmon Dinner"
+        ],
+        "likedGifts": [
+            "Eggs",
+            "All Fruit"
+        ],
+        "image": "/images/villagers/alex.webp"
+    },
+    {
+        "id": "sam",
+        "name": "Sam",
+        "birthday": "Summer 17",
+        "lovedGifts": [
+            "Cactus Fruit",
+            "Maple Bar",
+            "Pizza",
+            "Tigerseye"
+        ],
+        "likedGifts": [
+            "Eggs",
+            "Fruit"
+        ],
+        "image": "/images/villagers/sam.webp"
+    },
+    {
+        "id": "demetrius",
+        "name": "Demetrius",
+        "birthday": "Summer 19",
+        "lovedGifts": [
+            "Bean Hotpot",
+            "Ice Cream",
+            "Rice Pudding",
+            "Strawberry"
+        ],
+        "likedGifts": [
+            "Fruit",
+            "Eggs"
+        ],
+        "image": "/images/villagers/demetrius.webp"
+    },
+    {
+        "id": "dwarf",
+        "name": "Dwarf",
+        "birthday": "Summer 22",
+        "lovedGifts": [
+            "Amethyst",
+            "Aquamarine",
+            "Emerald",
+            "Jade",
+            "Lemon Stone",
+            "Omni Geode",
+            "Ruby",
+            "Topaz"
+        ],
+        "likedGifts": [
+            "Quartz",
+            "Cave Carrot"
+        ],
+        "image": "/images/villagers/dwarf.webp"
+    },
+    {
+        "id": "willy",
+        "name": "Willy",
+        "birthday": "Summer 24",
+        "lovedGifts": [
+            "Catfish",
+            "Diamond",
+            "Iridium Bar",
+            "Mead",
+            "Octopus",
+            "Pumpkin",
+            "Sea Cucumber",
+            "Sturgeon"
+        ],
+        "likedGifts": [
+            "All Fish",
+            "Daffodil"
+        ],
+        "image": "/images/villagers/willy.webp"
+    },
+    {
+        "id": "penny",
+        "name": "Penny",
+        "birthday": "Fall 2",
+        "lovedGifts": [
+            "Diamond",
+            "Emerald",
+            "Melon",
+            "Poppy",
+            "Poppyseed Muffin",
+            "Red Plate",
+            "Sandfish",
+            "Tom Kha Soup"
+        ],
+        "likedGifts": [
+            "Milk",
+            "Dandelion"
+        ],
+        "image": "/images/villagers/penny.webp"
+    },
+    {
+        "id": "jodi",
+        "name": "Jodi",
+        "birthday": "Fall 11",
+        "lovedGifts": [
+            "Chocolate Cake",
+            "Crispy Bass",
+            "Eggplant Parmesan",
+            "Fried Eel",
+            "Pancakes",
+            "Rhubarb Pie",
+            "Vegetable Medley"
+        ],
+        "likedGifts": [
+            "Eggs",
+            "Milk"
+        ],
+        "image": "/images/villagers/jodi.webp"
+    },
+    {
+        "id": "abigail",
+        "name": "Abigail",
+        "birthday": "Fall 13",
+        "lovedGifts": [
+            "Amethyst",
+            "Blackberry Cobbler",
+            "Chocolate Cake",
+            "Pumpkin",
+            "Pufferfish",
+            "Spicy Eel"
+        ],
+        "likedGifts": [
+            "Quartz",
+            "Fairy Rose"
+        ],
+        "image": "/images/villagers/abigail.webp"
+    },
+    {
+        "id": "sandy",
+        "name": "Sandy",
+        "birthday": "Fall 15",
+        "lovedGifts": [
+            "Crocus",
+            "Daffodil",
+            "Sweet Pea"
+        ],
+        "likedGifts": [
+            "All Fruit",
+            "All Foraged"
+        ],
+        "image": "/images/villagers/sandy.webp"
+    },
+    {
+        "id": "marnie",
+        "name": "Marnie",
+        "birthday": "Fall 18",
+        "lovedGifts": [
+            "Diamond",
+            "Farmer's Lunch",
+            "Pink Cake",
+            "Pumpkin Pie",
+            "Quartz"
+        ],
+        "likedGifts": [
+            "Eggs",
+            "Milk"
+        ],
+        "image": "/images/villagers/marnie.webp"
+    },
+    {
+        "id": "robin",
+        "name": "Robin",
+        "birthday": "Fall 21",
+        "lovedGifts": [
+            "Goat Cheese",
+            "Peach",
+            "Spaghetti"
+        ],
+        "likedGifts": [
+            "Daffodil",
+            "Eggs"
+        ],
+        "image": "/images/villagers/robin.webp"
+    },
+    {
+        "id": "george",
+        "name": "George",
+        "birthday": "Fall 24",
+        "lovedGifts": [
+            "Fried Mushroom",
+            "Leek"
+        ],
+        "likedGifts": [
+            "Daffodil",
+            "Eggplant"
+        ],
+        "image": "/images/villagers/george.webp"
+    },
+    {
+        "id": "krobus",
+        "name": "Krobus",
+        "birthday": "Winter 1",
+        "lovedGifts": [
+            "Diamond",
+            "Iridium Bar",
+            "Pumpkin",
+            "Void Egg",
+            "Void Mayonnaise",
+            "Wild Horseradish"
+        ],
+        "likedGifts": [
+            "Quartz",
+            "All Fish"
+        ],
+        "image": "/images/villagers/krobus.webp"
+    },
+    {
+        "id": "linus",
+        "name": "Linus",
+        "birthday": "Winter 3",
+        "lovedGifts": [
+            "Blueberry Tart",
+            "Cactus Fruit",
+            "Coconut",
+            "Dish o' The Sea",
+            "Yam"
+        ],
+        "likedGifts": [
+            "All Fruit",
+            "All Foraged"
+        ],
+        "image": "/images/villagers/linus.webp"
+    },
+    {
+        "id": "caroline",
+        "name": "Caroline",
+        "birthday": "Winter 7",
+        "lovedGifts": [
+            "Fish Taco",
+            "Green Tea",
+            "Summer Spangle",
+            "Tropical Curry"
+        ],
+        "likedGifts": [
+            "Daffodil",
+            "Tea Leaves"
+        ],
+        "image": "/images/villagers/caroline.webp"
+    },
+    {
+        "id": "sebastian",
+        "name": "Sebastian",
+        "birthday": "Winter 10",
+        "lovedGifts": [
+            "Frozen Tear",
+            "Obsidian",
+            "Pumpkin Soup",
+            "Sashimi",
+            "Void Egg"
+        ],
+        "likedGifts": [
+            "Quartz",
+            "Coffee"
+        ],
+        "image": "/images/villagers/sebastian.webp"
+    },
+    {
+        "id": "harvey",
+        "name": "Harvey",
+        "birthday": "Winter 14",
+        "lovedGifts": [
+            "Coffee",
+            "Pickles",
+            "Super Meal",
+            "Truffle Oil",
+            "Wine"
+        ],
+        "likedGifts": [
+            "Fruit",
+            "Wine"
+        ],
+        "image": "/images/villagers/harvey.webp"
+    },
+    {
+        "id": "wizard",
+        "name": "Wizard",
+        "birthday": "Winter 17",
+        "lovedGifts": [
+            "Purple Mushroom",
+            "Solar Essence",
+            "Super Cucumber",
+            "Void Essence"
+        ],
+        "likedGifts": [
+            "Quartz",
+            "All Foraged"
+        ],
+        "image": "/images/villagers/wizard.webp"
+    },
+    {
+        "id": "evelyn",
+        "name": "Evelyn",
+        "birthday": "Winter 20",
+        "lovedGifts": [
+            "Beet",
+            "Chocolate Cake",
+            "Diamond",
+            "Fairy Rose",
+            "Stuffing",
+            "Tulip"
+        ],
+        "likedGifts": [
+            "Daffodil",
+            "Milk"
+        ],
+        "image": "/images/villagers/evelyn.webp"
+    },
+    {
+        "id": "leah",
+        "name": "Leah",
+        "birthday": "Winter 23",
+        "lovedGifts": [
+            "Goat Cheese",
+            "Poppyseed Muffin",
+            "Salad",
+            "Stir Fry",
+            "Truffle",
+            "Vegetable Medley",
+            "Wine"
+        ],
+        "likedGifts": [
+            "Driftwood",
+            "Vegetables"
+        ],
+        "image": "/images/villagers/leah.webp"
+    },
+    {
+        "id": "clint",
+        "name": "Clint",
+        "birthday": "Winter 26",
+        "lovedGifts": [
+            "Amethyst",
+            "Aquamarine",
+            "Artichoke Dip",
+            "Emerald",
+            "Fiddlehead Risotto",
+            "Gold Bar",
+            "Iridium Bar",
+            "Jade",
+            "Omni Geode",
+            "Ruby",
+            "Topaz"
+        ],
+        "likedGifts": [
+            "Copper Bar",
+            "Iron Bar"
+        ],
+        "image": "/images/villagers/clint.webp"
+    }
 ]

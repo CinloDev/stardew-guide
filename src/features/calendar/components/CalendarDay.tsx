@@ -1,66 +1,75 @@
-import { seasonLabels } from "@/data/seasons";
-import type { Season } from "@/lib/constants";
-import { type CalendarEvent, getEventIcon } from "../utils/getSeasonEvents";
+import Image from "next/image";
+import { type CalendarEvent } from "../utils/getSeasonEvents";
 
 interface CalendarDayProps {
   day: number;
-  season: Season;
   events: CalendarEvent[];
   isToday: boolean;
 }
 
-export function CalendarDay({ day, season, events, isToday }: CalendarDayProps) {
+function getBirthdayPortrait(name: string): string {
+  const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  return `/images/villagers/${slug}.webp`;
+}
+
+export function CalendarDay({ day, events, isToday }: CalendarDayProps) {
   return (
     <article
-      className={`group relative rounded-xl border p-3 transition ${
+      className={`group relative min-h-18 border px-1 py-1 transition sm:min-h-21 sm:px-2 sm:py-1.5 ${
         isToday
-          ? "border-emerald-600 bg-emerald-50/70 shadow-sm"
-          : "border-amber-900/15 bg-white/90 hover:border-amber-300"
+          ? "border-emerald-600 bg-emerald-50/70"
+          : "border-amber-900/20 bg-stone-100/70 hover:border-amber-400"
       }`}
     >
-      <header className="mb-2 flex items-center justify-between">
-        <p className="text-sm font-semibold text-amber-950">Day {day}</p>
-        {isToday ? (
-          <span className="rounded-full bg-emerald-600 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white">
-            Today
-          </span>
-        ) : null}
+      <header className="flex items-center justify-end">
+        <p className="text-sm font-medium leading-none text-amber-950 sm:text-lg">{day}</p>
       </header>
 
-      <ul className="space-y-1.5">
-        {events.length === 0 ? (
-          <li className="text-xs text-stone-400">No events</li>
-        ) : (
-          events.map((event) => {
-            const tooltip =
-              event.type === "festival"
-                ? `${seasonLabels[season]} Day ${day}\n${event.name}\nLocation: ${event.location}\nTime: ${event.time}`
-                : event.type === "birthday"
-                  ? `${seasonLabels[season]} Day ${day}\nBirthday: ${event.name}`
-                  : `${seasonLabels[season]} Day ${day}\n${event.name}\n${event.note}`;
+      <ul className="mt-1 flex flex-wrap items-center gap-1 sm:mt-1.5 sm:gap-1.5">
+        {events.map((event) => {
+          if (!["birthday", "festival", "special", "fishing"].includes(event.type)) {
+            return null;
+          }
 
-            return (
-              <li
-                key={`${event.type}-${event.name}-${day}`}
-                className="group/item relative text-xs text-stone-700"
-              >
-                <span className="mr-1" aria-hidden="true">
-                  {getEventIcon(event.type)}
-                </span>
-                <span>{event.name}</span>
-                {event.type === "crop" ? (
-                  <span className="text-stone-500"> - {event.note}</span>
-                ) : null}
-
-                <div className="pointer-events-none absolute left-0 top-full z-20 mt-2 hidden w-56 rounded-lg border border-amber-900/20 bg-amber-50 p-2 text-[11px] leading-relaxed text-stone-700 shadow-md group-hover/item:block group-focus-within/item:block">
-                  {tooltip.split("\n").map((line) => (
-                    <p key={line}>{line}</p>
-                  ))}
-                </div>
-              </li>
-            );
-          })
-        )}
+          return (
+            <li key={`${event.type}-${event.name}-${day}`}>
+              {event.type === "birthday" ? (
+                <Image
+                  src={getBirthdayPortrait(event.name)}
+                  alt={event.name}
+                  width={64}
+                  height={64}
+                  className="h-8 w-8 rounded-md object-cover sm:h-16 sm:w-16"
+                />
+              ) : event.type === "festival" ? (
+                <Image
+                  src="/images/events/flag.gif"
+                  alt={event.name}
+                  width={32}
+                  height={32}
+                  className="h-6 w-6 object-contain sm:h-8 sm:w-8"
+                  unoptimized
+                />
+              ) : event.type === "special" ? (
+                <Image
+                  src="/images/events/star.png"
+                  alt={event.name}
+                  width={32}
+                  height={32}
+                  className="h-6 w-6 object-contain sm:h-8 sm:w-8"
+                />
+              ) : (
+                <Image
+                  src="/images/events/hook.png"
+                  alt={event.name}
+                  width={32}
+                  height={32}
+                  className="h-6 w-6 object-contain sm:h-8 sm:w-8"
+                />
+              )}
+            </li>
+          );
+        })}
       </ul>
     </article>
   );

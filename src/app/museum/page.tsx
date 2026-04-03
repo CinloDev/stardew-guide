@@ -3,17 +3,18 @@ import museumItemsData from "@/data/museum-items.json";
 import { ClientMuseumSummary } from "@/features/museum/components/ClientMuseumSummary";
 import { MuseumGrid } from "@/features/museum/components/MuseumGrid";
 import type { MuseumItem } from "@/types/museum";
+import { getTranslations } from "@/lib/i18n";
 
 const museumItems = museumItemsData as MuseumItem[];
 
 export default function MuseumPage() {
+  const t = getTranslations("es");
   return (
     <section className="space-y-5">
       <header>
-        <h1 className="section-title">Museum Interactive Tracker</h1>
+        <h1 className="section-title">{t.pages.museum.title}</h1>
         <p className="mt-2 text-sm text-stone-700">
-          Marca cada item como encontrado o donado. El estado se guarda en localStorage mediante
-          Zustand.
+          {t.pages.museum.description}
         </p>
       </header>
 

@@ -3,13 +3,9 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
+import { getNavigation } from "@/lib/i18n";
 
-const navLinks = [
-  { href: "/museum", label: "Museum" },
-  { href: "/villagers", label: "Villagers" },
-  { href: "/recipes", label: "Recipes" },
-  { href: "/calendar", label: "Calendar" },
-];
+const navLinks = getNavigation();
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +14,7 @@ export function Navbar() {
     <header className="border-b border-amber-900/15 bg-amber-50/80 backdrop-blur-sm">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
         <Link href="/" className="text-xl font-semibold text-amber-950">
-          🌾 Stardew Guide
+          Guía Stardew
         </Link>
 
         {/* Desktop Navigation */}
@@ -47,6 +43,7 @@ export function Navbar() {
             stroke="currentColor"
             viewBox="0 0 24 24"
           >
+            <title>{isOpen ? "Cerrar menú" : "Abrir menú"}</title>
             {isOpen ? (
               <path
                 strokeLinecap="round"

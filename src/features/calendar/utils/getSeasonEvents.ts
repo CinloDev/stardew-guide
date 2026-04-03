@@ -3,7 +3,7 @@ import { type FestivalEvent, festivals } from "@/data/festivals";
 import { type CropPlanEvent, cropPlans } from "@/data/seasons";
 import type { Season } from "@/lib/constants";
 
-export type CalendarEventType = "festival" | "birthday" | "crop";
+export type CalendarEventType = "festival" | "birthday" | "crop" | "special" | "fishing";
 
 export type CalendarEvent = FestivalEvent | BirthdayEvent | CropPlanEvent;
 
