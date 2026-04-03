@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Tooltip } from "@/components/ui/Tooltip";
 import { type CalendarEvent } from "../utils/getSeasonEvents";
 
 interface CalendarDayProps {
@@ -31,42 +32,50 @@ export function CalendarDay({ day, events, isToday }: CalendarDayProps) {
             return null;
           }
 
+          let tooltipContent = event.name;
+          if (event.type === "birthday") tooltipContent = `🎂 Cumple de ${event.name}`;
+          if (event.type === "festival") tooltipContent = `🎉 ${event.name}`;
+          if (event.type === "fishing") tooltipContent = `🎣 ${event.name}`;
+          if (event.type === "special") tooltipContent = `⭐ ${event.name}`;
+
           return (
             <li key={`${event.type}-${event.name}-${day}`}>
-              {event.type === "birthday" ? (
-                <Image
-                  src={getBirthdayPortrait(event.name)}
-                  alt={event.name}
-                  width={64}
-                  height={64}
-                  className="h-8 w-8 rounded-md object-cover sm:h-16 sm:w-16"
-                />
-              ) : event.type === "festival" ? (
-                <Image
-                  src="/images/events/flag.gif"
-                  alt={event.name}
-                  width={32}
-                  height={32}
-                  className="h-6 w-6 object-contain sm:h-8 sm:w-8"
-                  unoptimized
-                />
-              ) : event.type === "special" ? (
-                <Image
-                  src="/images/events/star.png"
-                  alt={event.name}
-                  width={32}
-                  height={32}
-                  className="h-6 w-6 object-contain sm:h-8 sm:w-8"
-                />
-              ) : (
-                <Image
-                  src="/images/events/hook.png"
-                  alt={event.name}
-                  width={32}
-                  height={32}
-                  className="h-6 w-6 object-contain sm:h-8 sm:w-8"
-                />
-              )}
+              <Tooltip content={tooltipContent}>
+                {event.type === "birthday" ? (
+                  <Image
+                    src={getBirthdayPortrait(event.name)}
+                    alt={event.name}
+                    width={64}
+                    height={64}
+                    className="h-8 w-8 rounded-md object-cover sm:h-16 sm:w-16"
+                  />
+                ) : event.type === "festival" ? (
+                  <Image
+                    src="/images/events/flag.gif"
+                    alt={event.name}
+                    width={64}
+                    height={64}
+                    className="h-8 w-8 object-contain sm:h-16 sm:w-16"
+                    unoptimized
+                  />
+                ) : event.type === "special" ? (
+                  <Image
+                    src="/images/events/star.png"
+                    alt={event.name}
+                    width={32}
+                    height={32}
+                    className="h-6 w-6 object-contain sm:h-8 sm:w-8"
+                  />
+                ) : (
+                  <Image
+                    src="/images/events/hook.png"
+                    alt={event.name}
+                    width={32}
+                    height={32}
+                    className="h-6 w-6 object-contain sm:h-8 sm:w-8"
+                  />
+                )}
+              </Tooltip>
             </li>
           );
         })}
