@@ -1,10 +1,10 @@
 import { SEASONS, type Season } from "@/lib/constants";
 
 export const seasonLabels: Record<Season, string> = {
-  spring: "Spring",
-  summer: "Summer",
-  fall: "Fall",
-  winter: "Winter",
+  spring: "Primavera",
+  summer: "Verano",
+  fall: "Otoño",
+  winter: "Invierno",
 };
 
 export const seasonOrder = SEASONS;

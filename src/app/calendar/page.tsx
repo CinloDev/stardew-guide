@@ -8,6 +8,7 @@ import { SeasonSelector } from "@/features/calendar/components/SeasonSelector";
 import { useCalendar } from "@/features/calendar/hooks/useCalendar";
 import { getTranslations } from "@/lib/i18n";
 import { type FestivalEvent } from "@/data/festivals";
+import { type CalendarEvent } from "@/features/calendar/utils/getSeasonEvents";
 import { useState } from "react";
 
 const getSeasonBackground = (season: string) => {
@@ -28,7 +29,7 @@ const getSeasonBackground = (season: string) => {
 export default function CalendarPage() {
     const { season, setSeason, seasonOptions, filter, setFilter, events, today, showVendors } = useCalendar();
     const t = getTranslations("es");
-    const [selectedEvent, setSelectedEvent] = useState<FestivalEvent | null>(null);
+    const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
 
     return (
         <>

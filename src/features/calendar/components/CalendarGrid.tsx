@@ -11,7 +11,7 @@ interface CalendarGridProps {
   currentDay: number;
   isCurrentSeason: boolean;
   showVendors: boolean;
-  onEventClick: (event: FestivalEvent) => void;
+  onEventClick: (event: CalendarEvent) => void;
 }
 
 const days = Array.from({ length: 28 }, (_, index) => index + 1);

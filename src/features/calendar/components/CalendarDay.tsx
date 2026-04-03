@@ -12,7 +12,7 @@ interface CalendarDayProps {
   isToday: boolean;
   showVendors: boolean;
   season: string;
-  onEventClick: (event: FestivalEvent) => void;
+  onEventClick: (event: CalendarEvent) => void;
 }
 
 function getBirthdayPortrait(name: string): string {
@@ -27,6 +27,12 @@ const EVENT_ICONS: Record<string, { src: string; unoptimized?: boolean }> = {
   librero: { src: "/images/events/librero.webp" },
 };
 
+type CalendarItem = 
+  | { type: 'birthday'; data: CalendarEvent }
+  | { type: 'festival'; data: CalendarEvent }
+  | { type: 'vendor-tv'; data: { name: string; icon: string } }
+  | { type: 'vendor'; data: { name: string; icon: string; vendorData: any } };
+
 export function CalendarDay({ day, events, isToday, showVendors, season, onEventClick }: CalendarDayProps) {
   const isQueenDay = showVendors && (day % 7 === 3 || day % 7 === 0);
   const isTravelingCartDay = showVendors && (day % 7 === 5 || day % 7 === 0);
@@ -36,131 +42,124 @@ export function CalendarDay({ day, events, isToday, showVendors, season, onEvent
   const otherEvents = events.filter(
     (e) => e.type !== "birthday" && ["festival", "special", "fishing", "librero"].includes(e.type)
   ) as FestivalEvent[];
-  const hasVendors = isQueenDay || isTravelingCartDay || isKrobusDay;
+
+  // Prepare all interactive items with proper typing
+  const allItems: CalendarItem[] = [
+    ...birthdayEvents.map(e => ({ type: 'birthday' as const, data: e })),
+    ...otherEvents.map(e => ({ type: 'festival' as const, data: e })),
+  ];
+
+  if (isQueenDay) allItems.push({ type: 'vendor-tv', data: { name: "Reina de la Salsa (TV)", icon: "/images/events/tv.webp" } });
+  if (isKrobusDay) allItems.push({ 
+    type: 'vendor', 
+    data: { 
+      name: "Tienda de Krobus", 
+      icon: "/images/events/regador.webp",
+      vendorData: { type: "vendor", season, day, name: "Tienda de Krobus", location: "Las Alcantarillas", time: "12:00 PM – 10:00 PM" }
+    } 
+  });
+  if (isTravelingCartDay) allItems.push({ 
+    type: 'vendor', 
+    data: { 
+      name: "Carro Ambulante", 
+      icon: "/images/events/traveling.webp",
+      vendorData: { type: "vendor", season, day, name: "Carro Ambulante", location: "Bosque Tizón", time: "6:00 AM – 8:00 PM" }
+    } 
+  });
 
   return (
     <article
-      className={`group relative flex min-w-0 flex-col border px-1 py-1 transition sm:min-h-20 sm:flex-row sm:px-1.5 sm:py-1.5 ${
+      className={`group relative flex min-w-0 flex-col border px-1 py-1 transition min-h-[100px] sm:min-h-[150px] ${
         isToday
           ? "border-emerald-600 bg-emerald-50/70"
           : "border-amber-900/20 bg-stone-100/70 hover:border-amber-400"
       }`}
     >
-      {/* Day number - Always at top */}
-      <div className="flex w-full items-center justify-between sm:absolute sm:right-1.5 sm:top-1.5 sm:w-auto">
-        <p className="text-[10px] font-bold leading-none text-amber-950/40 sm:text-base sm:text-amber-950">{day}</p>
+      {/* Day number */}
+      <div className="absolute right-1.5 top-1 z-10">
+        <p className="text-[10px] font-bold leading-none text-amber-950/40 sm:text-xs sm:text-amber-950/60">{day}</p>
       </div>
 
-      {/* Main content: Birthdays & Events - Stacked on mobile */}
-      <div className="mt-1 flex w-full flex-1 flex-col items-center justify-center gap-1.5 sm:mt-0 sm:w-1/2">
-        {birthdayEvents.map((event) => {
-          const slug = event.name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+      {/* Dynamic Grid Container */}
+      <div className="mt-4 grid w-full grid-cols-2 gap-1.5 sm:mt-6 sm:gap-3">
+        {allItems.map((item, index) => {
+          // Centering/Stacking logic: 
+          // - 1, 2 items: All items span 2 columns (vertical stack)
+          // - 3 items: First item spans 2, others span 1 (pyramid)
+          // - 4 items: All items span 1 (2x2 grid)
+          const shouldSpan = 
+            (allItems.length <= 2) || 
+            (allItems.length === 3 && index === 0);
+          
           return (
-            <Tooltip key={event.name} content={`🎂 Cumple de ${event.name}`}>
-              <Link href={`/villagers#villager-${slug}`} scroll={true} className="block">
-                <Image
-                  src={getBirthdayPortrait(event.name)}
-                  alt={event.name}
-                  width={32}
-                  height={32}
-                  className="h-8 w-8 rounded-md object-cover sm:h-10 sm:w-10 hover:ring-2 hover:ring-amber-500 transition"
-                />
-              </Link>
-            </Tooltip>
+            <div 
+              key={`${item.type}-${index}`} 
+              className={`flex items-center justify-center ${shouldSpan ? 'col-span-2' : 'col-span-1'}`}
+            >
+              {item.type === 'birthday' && (
+                <Tooltip content={`🎂 Cumple de ${item.data.name}`}>
+                  <button
+                    type="button"
+                    onClick={() => onEventClick(item.data)}
+                    className="block cursor-pointer hover:scale-110 transition-transform"
+                  >
+                    <Image
+                      src={getBirthdayPortrait(item.data.name)}
+                      alt={item.data.name}
+                      width={48}
+                      height={48}
+                      className="h-10 w-10 rounded-md object-cover sm:h-14 sm:w-14 hover:ring-2 hover:ring-amber-500 shadow-sm"
+                    />
+                  </button>
+                </Tooltip>
+              )}
+
+              {item.type === 'festival' && (
+                <Tooltip content={item.data.name}>
+                  <button
+                    type="button"
+                    onClick={() => onEventClick(item.data)}
+                    className="cursor-pointer hover:scale-110 transition-transform block"
+                  >
+                    <Image
+                      src={EVENT_ICONS[item.data.type]?.src || "/images/events/flag.gif"}
+                      alt={item.data.name}
+                      width={44}
+                      height={44}
+                      className="h-10 w-10 object-contain sm:h-12 sm:w-12"
+                      unoptimized={EVENT_ICONS[item.data.type]?.unoptimized}
+                    />
+                  </button>
+                </Tooltip>
+              )}
+
+              {item.type === 'vendor-tv' && (
+                <Tooltip content={item.data.name}>
+                  <div className="hover:scale-110 transition-transform cursor-help">
+                    <Image src={item.data.icon} alt="TV" width={36} height={36} className="h-8 w-8 object-contain sm:h-11 sm:w-11" />
+                  </div>
+                </Tooltip>
+              )}
+
+              {item.type === 'vendor' && (
+                <Tooltip content={item.data.name}>
+                  <button
+                    type="button"
+                    onClick={() => onEventClick(item.data.vendorData)}
+                    className="cursor-pointer hover:scale-110 transition-transform"
+                  >
+                    <Image src={item.data.icon} alt="Vendor" width={36} height={36} className="h-8 w-8 object-contain sm:h-11 sm:w-11" />
+                  </button>
+                </Tooltip>
+              )}
+            </div>
           );
         })}
-        {otherEvents.map((event) => {
-          const iconConfig = EVENT_ICONS[event.type] ?? { src: "/images/events/flag.gif" };
-          return (
-            <Tooltip key={`${event.type}-${event.name}-${day}`} content={event.name}>
-              <button
-                type="button"
-                onClick={() => onEventClick(event)}
-                className="cursor-pointer hover:scale-110 transition-transform block"
-              >
-                <Image
-                  src={iconConfig.src}
-                  alt={event.name}
-                  width={32}
-                  height={32}
-                  className="h-7 w-7 object-contain sm:h-8 sm:w-8"
-                  unoptimized={iconConfig.unoptimized}
-                />
-              </button>
-            </Tooltip>
-          );
-        })}
-
-        {/* Vendors - Below main events on mobile */}
-        {hasVendors && (
-          <div className="flex flex-wrap justify-center gap-1 sm:hidden">
-            {isQueenDay && (
-              <Tooltip content="Reina de la Salsa (TV)">
-                <Image src="/images/events/tv.webp" alt="TV" width={24} height={24} className="h-6 w-6 object-contain" />
-              </Tooltip>
-            )}
-            {isKrobusDay && (
-              <Tooltip content="Tienda de Krobus">
-                <button
-                  type="button"
-                  onClick={() => onEventClick({
-                    type: "vendor",
-                    season: season as FestivalEvent["season"],
-                    day,
-                    name: "Tienda de Krobus",
-                    location: "Las Alcantarillas",
-                    time: "12:00 PM – 10:00 PM",
-                  })}
-                  className="cursor-pointer hover:scale-110 transition-transform"
-                >
-                  <Image src="/images/events/regador.webp" alt="Krobus" width={24} height={24} className="h-6 w-6 object-contain" />
-                </button>
-              </Tooltip>
-            )}
-            {isTravelingCartDay && (
-              <Tooltip content="Carro Ambulante">
-                <button
-                  type="button"
-                  onClick={() => onEventClick({
-                    type: "vendor",
-                    season: season as FestivalEvent["season"],
-                    day,
-                    name: "Carro Ambulante",
-                    location: "Bosque Tizón",
-                    time: "6:00 AM – 8:00 PM",
-                  })}
-                  className="cursor-pointer hover:scale-110 transition-transform"
-                >
-                  <Image src="/images/events/traveling.webp" alt="Cart" width={24} height={24} className="h-6 w-6 object-contain" />
-                </button>
-              </Tooltip>
-            )}
-          </div>
-        )}
       </div>
 
-      {/* Desktop Vendors (Hidden on mobile) */}
-      <div className="hidden sm:mt-6 sm:flex sm:w-1/2 sm:flex-col sm:items-end sm:gap-0.5">
-        {isQueenDay && (
-          <Tooltip content="Reina de la Salsa (TV)">
-            <Image src="/images/events/tv.webp" alt="TV" width={16} height={16} className="h-4 w-4" />
-          </Tooltip>
-        )}
-        {isKrobusDay && (
-          <Tooltip content="Tienda de Krobus">
-            <button type="button" onClick={() => onEventClick({ type: "vendor", season: season as FestivalEvent["season"], day, name: "Tienda de Krobus", location: "Las Alcantarillas", time: "12:00 PM – 10:00 PM" })}>
-              <Image src="/images/events/regador.webp" alt="Krobus" width={16} height={16} className="h-4 w-4" />
-            </button>
-          </Tooltip>
-        )}
-        {isTravelingCartDay && (
-          <Tooltip content="Carro Ambulante">
-            <button type="button" onClick={() => onEventClick({ type: "vendor", season: season as FestivalEvent["season"], day, name: "Carro Ambulante", location: "Bosque Tizón", time: "6:00 AM – 8:00 PM" })}>
-              <Image src="/images/events/traveling.webp" alt="Cart" width={16} height={16} className="h-4 w-4" />
-            </button>
-          </Tooltip>
-        )}
-      </div>
     </article>
   );
 }
+
+
+

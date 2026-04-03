@@ -13,7 +13,7 @@ interface SeasonSelectorProps {
 export function SeasonSelector({ season, seasons, onSeasonChange }: SeasonSelectorProps) {
   return (
     <div className="space-y-2">
-      <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">Season</p>
+      <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">Estación</p>
       <FilterBar
         value={season}
         onChange={(value) => onSeasonChange(value as Season)}
