@@ -7,9 +7,11 @@ interface ModalProps {
   title: string;
   onClose: () => void;
   children: React.ReactNode;
+  className?: string;
+  titleClassName?: string;
 }
 
-export function Modal({ open, title, onClose, children }: ModalProps) {
+export function Modal({ open, title, onClose, children, className = "bg-white", titleClassName = "text-amber-950" }: ModalProps) {
   useEffect(() => {
     if (!open) return;
 
@@ -27,9 +29,9 @@ export function Modal({ open, title, onClose, children }: ModalProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-stone-950/45 p-4">
-      <div className="w-full max-w-lg rounded-2xl bg-white p-5 shadow-xl">
+      <div className={`w-full max-w-lg rounded-2xl p-5 shadow-xl ${className}`}>
         <header className="flex items-center justify-between">
-          <h3 className="text-lg font-semibold text-amber-950">{title}</h3>
+          <h3 className={`text-lg font-semibold ${titleClassName}`}>{title}</h3>
           <button
             type="button"
             onClick={onClose}
