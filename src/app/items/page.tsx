@@ -1,15 +1,17 @@
 import museumItemsData from "@/data/museum-items.json";
 import type { MuseumItem } from "@/types/museum";
 import Link from "next/link";
+import { getTranslations } from "@/lib/i18n";
 
 const museumItems = museumItemsData as MuseumItem[];
 
 export default function ItemsPage() {
+  const t = getTranslations("es");
   return (
     <section className="space-y-4">
-      <h1 className="section-title">Items Index</h1>
+      <h1 className="section-title">{t.pages.items.title}</h1>
       <p className="text-sm text-stone-700">
-        Data route for item detail pages and future integrations.
+        {t.pages.items.description}
       </p>
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

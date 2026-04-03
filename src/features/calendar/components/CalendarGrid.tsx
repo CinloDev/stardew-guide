@@ -1,46 +1,55 @@
 "use client";
 
-import { FilterBar } from "@/components/common/FilterBar";
-import {
-  type CalendarEntry,
-  filterCalendarBySeason,
-} from "@/features/calendar/utils/calendarLogic";
-import { SEASONS, type Season } from "@/lib/constants";
-import { useMemo, useState } from "react";
+import type { Season } from "@/lib/constants";
+import type { CalendarEvent } from "../utils/getSeasonEvents";
+import { type FestivalEvent } from "@/data/festivals";
+import { CalendarDay } from "./CalendarDay";
 
 interface CalendarGridProps {
-  entries: CalendarEntry[];
+  season: Season;
+  events: CalendarEvent[];
+  currentDay: number;
+  isCurrentSeason: boolean;
+  showVendors: boolean;
+  onEventClick: (event: CalendarEvent) => void;
 }
 
-export function CalendarGrid({ entries }: CalendarGridProps) {
-  const [activeSeason, setActiveSeason] = useState<Season | "all">("all");
+const days = Array.from({ length: 28 }, (_, index) => index + 1);
+const weekDays = ["Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"];
 
-  const filtered = useMemo(
-    () => filterCalendarBySeason(entries, activeSeason),
-    [entries, activeSeason],
-  );
-
+export function CalendarGrid({ season, events, currentDay, isCurrentSeason, showVendors, onEventClick }: CalendarGridProps) {
   return (
-    <section className="space-y-4">
-      <FilterBar
-        value={activeSeason}
-        onChange={(value) => setActiveSeason(value as Season | "all")}
-        options={[
-          { label: "All", value: "all" },
-          ...SEASONS.map((season) => ({ label: season, value: season })),
-        ]}
-      />
-
-      <div className="grid gap-3 sm:grid-cols-2">
-        {filtered.map((entry) => (
-          <article key={`${entry.season}-${entry.day}-${entry.title}`} className="panel">
-            <p className="text-xs uppercase tracking-wide text-stone-500">{entry.type}</p>
-            <h3 className="text-lg font-semibold text-amber-950">
-              Day {entry.day} · {entry.season}
-            </h3>
-            <p className="mt-1 text-sm text-stone-700">{entry.title}</p>
-          </article>
+    <section className="w-full min-w-0 space-y-1 sm:space-y-2 overflow-x-hidden">
+      {/* Header: Weekdays */}
+      <div className="grid w-full grid-cols-[repeat(7,minmax(0,1fr))] gap-0.5 sm:gap-2">
+        {weekDays.map((weekDay) => (
+          <div
+            key={weekDay}
+            className="rounded border border-amber-900/15 bg-amber-100/60 px-0 py-1 text-center text-[8px] font-bold uppercase tracking-tight text-amber-900 sm:rounded-lg sm:px-3 sm:py-2 sm:text-xs sm:tracking-wide"
+          >
+            {weekDay}
+          </div>
         ))}
+      </div>
+
+      {/* Grid: Days */}
+      <div className="grid w-full grid-cols-[repeat(7,minmax(0,1fr))] gap-0.5 sm:gap-2">
+        {days.map((day) => {
+          const dayEvents = events.filter((event) => event.day === day);
+          const isToday = isCurrentSeason && currentDay === day;
+
+          return (
+            <CalendarDay
+              key={`${season}-${day}`}
+              day={day}
+              events={dayEvents}
+              isToday={isToday}
+              showVendors={showVendors}
+              season={season}
+              onEventClick={onEventClick}
+            />
+          );
+        })}
       </div>
     </section>
   );
