@@ -546,5 +546,22 @@
             "Iron Bar"
         ],
         "image": "/images/villagers/clint.webp"
+    },
+    {
+        "id": "leo",
+        "name": "Leo",
+        "birthday": "Summer 26",
+        "lovedGifts": [
+            "Ostrich Egg",
+            "Mango",
+            "Duck Feather",
+            "Poi"
+        ],
+        "likedGifts": [
+            "Maki Roll",
+            "Fried Egg",
+            "Omelet"
+        ],
+        "image": "/images/villagers/leo.webp"
     }
 ]

@@ -26,11 +26,11 @@ export default function RootLayout({
     }>) {
     return (
         <html lang="es">
-            <body className={`${headingFont.variable} ${bodyFont.variable} antialiased`}>
-                <Navbar />
-                    <main className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6">{children}</main>
-                <Footer />
-            </body>
+    <body className={`${headingFont.variable} ${bodyFont.variable} antialiased overflow-x-hidden`}>
+        <Navbar />
+            <main className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 overflow-x-hidden">{children}</main>
+        <Footer />
+    </body>
         </html>
     );
 }

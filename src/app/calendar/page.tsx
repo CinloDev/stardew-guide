@@ -2,10 +2,13 @@
 
 import { seasonLabels } from "@/data/seasons";
 import { CalendarGrid } from "@/features/calendar/components/CalendarGrid";
+import { CalendarEventModal } from "@/features/calendar/components/CalendarEventModal";
 import { EventFilter } from "@/features/calendar/components/EventFilter";
 import { SeasonSelector } from "@/features/calendar/components/SeasonSelector";
 import { useCalendar } from "@/features/calendar/hooks/useCalendar";
 import { getTranslations } from "@/lib/i18n";
+import { type FestivalEvent } from "@/data/festivals";
+import { useState } from "react";
 
 const getSeasonBackground = (season: string) => {
     switch (season) {
@@ -25,6 +28,7 @@ const getSeasonBackground = (season: string) => {
 export default function CalendarPage() {
     const { season, setSeason, seasonOptions, filter, setFilter, events, today, showVendors } = useCalendar();
     const t = getTranslations("es");
+    const [selectedEvent, setSelectedEvent] = useState<FestivalEvent | null>(null);
 
     return (
         <>
@@ -57,8 +61,13 @@ export default function CalendarPage() {
                     currentDay={today.day}
                     isCurrentSeason={today.season === season}
                     showVendors={showVendors}
+                    onEventClick={setSelectedEvent}
                 />
             </section>
+            <CalendarEventModal
+                event={selectedEvent}
+                onClose={() => setSelectedEvent(null)}
+            />
         </>
     );
 }

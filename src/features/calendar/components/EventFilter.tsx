@@ -23,7 +23,7 @@ export function EventFilter({ value, onChange }: EventFilterProps) {
         <button
           type="button"
           onClick={() => onChange("all")}
-          className={`hidden sm:inline-flex rounded-lg border px-3 py-1.5 text-sm transition ${
+          className={`rounded-lg border px-3 py-1.5 text-sm transition ${
             value === "all"
               ? "border-amber-700 bg-amber-700 text-amber-50"
               : "border-amber-900/20 bg-white text-stone-700 hover:bg-amber-50"
