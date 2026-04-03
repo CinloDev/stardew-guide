@@ -23,7 +23,7 @@ const getSeasonBackground = (season: string) => {
 };
 
 export default function CalendarPage() {
-    const { season, setSeason, seasonOptions, filter, setFilter, events, today } = useCalendar();
+    const { season, setSeason, seasonOptions, filter, setFilter, events, today, showVendors } = useCalendar();
     const t = getTranslations("es");
 
     return (
@@ -56,6 +56,7 @@ export default function CalendarPage() {
                     events={events}
                     currentDay={today.day}
                     isCurrentSeason={today.season === season}
+                    showVendors={showVendors}
                 />
             </section>
         </>

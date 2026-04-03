@@ -7,8 +7,9 @@ interface GiftCardProps {
 }
 
 export function GiftCard({ villager }: GiftCardProps) {
+  const slug = villager.name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
   return (
-    <article className="panel">
+    <article id={`villager-${slug}`} className="panel">
       <div className="flex items-center gap-4">
         {villager.image && (
           <div className="shrink-0 bg-stone-100 rounded-md p-1">

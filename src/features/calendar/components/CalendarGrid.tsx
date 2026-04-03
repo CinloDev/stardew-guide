@@ -9,12 +9,13 @@ interface CalendarGridProps {
   events: CalendarEvent[];
   currentDay: number;
   isCurrentSeason: boolean;
+  showVendors: boolean;
 }
 
 const days = Array.from({ length: 28 }, (_, index) => index + 1);
 const weekDays = ["Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"];
 
-export function CalendarGrid({ season, events, currentDay, isCurrentSeason }: CalendarGridProps) {
+export function CalendarGrid({ season, events, currentDay, isCurrentSeason, showVendors }: CalendarGridProps) {
   return (
     <section className="space-y-1.5 sm:space-y-2">
       <div className="grid grid-cols-7 gap-1 sm:gap-2">
@@ -39,6 +40,7 @@ export function CalendarGrid({ season, events, currentDay, isCurrentSeason }: Ca
               day={day}
               events={dayEvents}
               isToday={isToday}
+              showVendors={showVendors}
             />
           );
         })}

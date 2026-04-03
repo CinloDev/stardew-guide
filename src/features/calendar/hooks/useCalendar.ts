@@ -15,14 +15,16 @@ export function useCalendar() {
   const events = useMemo(() => {
     const includeFestivals = filter === "all" || filter === "festival";
     const includeBirthdays = filter === "all" || filter === "birthday";
-    const includeCrops = filter === "all" || filter === "crop";
+    const includeVendors = filter === "all" || filter === "vendor";
 
     return getSeasonEvents(season, {
       includeFestivals,
       includeBirthdays,
-      includeCrops,
+      includeVendors,
     });
   }, [season, filter]);
+
+  const showVendors = filter === "all" || filter === "vendor";
 
   return {
     season,
@@ -32,5 +34,6 @@ export function useCalendar() {
     setFilter,
     events,
     today,
+    showVendors,
   };
 }
