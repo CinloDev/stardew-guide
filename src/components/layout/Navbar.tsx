@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { getNavigation } from "@/lib/i18n";
+import Link from "next/link";
+import { useState } from "react";
 
 const navLinks = getNavigation();
 
@@ -37,12 +37,7 @@ export function Navbar() {
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
-          <svg
-            className="h-6 w-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
+          <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <title>{isOpen ? "Cerrar menú" : "Abrir menú"}</title>
             {isOpen ? (
               <path

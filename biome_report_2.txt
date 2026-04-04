@@ -1,0 +1,78 @@
+.\src\components\portfolio\PortfolioInfo.tsx format ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Formatter would have printed the following content:
+  
+    68 │ ··········<button·
+       │                  -
+
+.\src\app\page.tsx:149:17 lint/a11y/useSemanticElements ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × The elements with the following roles can be changed to the following elements:
+    <button>
+    <input type="button">
+  
+  
+    147 │           {/* Birthday Card */}
+    148 │           {birthdayToday ? (
+  > 149 │             <div
+        │                 
+  > 150 │               role="button"
+        │               ^^^^^^^^^^^^^
+    151 │               tabIndex={0}
+    152 │               onClick={() => setSelectedEvent(birthdayToday)}
+  
+  i For examples and more information, see WAI-ARIA Roles
+  
+
+.\src\app\page.tsx:186:17 lint/a11y/useSemanticElements ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × The elements with the following roles can be changed to the following elements:
+    <button>
+    <input type="button">
+  
+  
+    184 │           {/* Festival or Special Event Card */}
+    185 │           {festivalToday ? (
+  > 186 │             <div
+        │                 
+  > 187 │               role="button"
+        │               ^^^^^^^^^^^^^
+    188 │               tabIndex={0}
+    189 │               onClick={() => setSelectedEvent(festivalToday)}
+  
+  i For examples and more information, see WAI-ARIA Roles
+  
+
+.\src\features\calendar\components\GameDateSync.tsx format ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Formatter would have printed the following content:
+  
+    106 106 │               <div className="relative" ref={pickerRef}>
+    107 107 │                 <button
+    108     │ - ··············type="button"
+        108 │ + ················type="button"
+    109 109 │                   onClick={() => setIsDayPickerOpen(!isDayPickerOpen)}
+    110 110 │                   className="group flex flex-col items-center px-3 sm:px-4 py-1 rounded-xl transition hover:bg-white/80"
+    ······· │ 
+    129 129 │                         {Array.from({ length: 28 }, (_, i) => i + 1).map((d) => (
+    130 130 │                           <button
+    131     │ - ··············type="button"
+        131 │ + ··························type="button"
+    132 132 │                             key={d}
+    133 133 │                             onClick={() => {
+    ······· │ 
+    147 147 │                       {/* Close button for mobile only */}
+    148 148 │                       <button
+    149     │ - ··············type="button"
+        149 │ + ······················type="button"
+    150 150 │                         onClick={() => setIsDayPickerOpen(false)}
+    151 151 │                         className="mt-4 w-full rounded-xl bg-stone-100 py-2 text-[10px] font-bold uppercase tracking-wider text-stone-500 sm:hidden"
+  
+
+Checked 71 files in 17ms. No fixes applied.
+Found 4 errors.
+check ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Some errors were emitted while running checks.
+  
+

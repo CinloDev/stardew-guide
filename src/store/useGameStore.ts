@@ -1,6 +1,6 @@
 "use client";
 
-import { STORAGE_KEYS, type Season, SEASONS } from "@/lib/constants";
+import { SEASONS, STORAGE_KEYS, type Season } from "@/lib/constants";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
@@ -20,7 +20,7 @@ export const useGameStore = create<GameState>()(
       day: 1,
 
       setSeason: (season) => set({ season }),
-      
+
       setDay: (day) => {
         const clampedDay = Math.min(Math.max(day, 1), 28);
         set({ day: clampedDay });
@@ -53,6 +53,6 @@ export const useGameStore = create<GameState>()(
     {
       name: STORAGE_KEYS.gameDate,
       storage: createJSONStorage(() => localStorage),
-    }
-  )
+    },
+  ),
 );

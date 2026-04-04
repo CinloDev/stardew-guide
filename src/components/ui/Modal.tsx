@@ -11,7 +11,14 @@ interface ModalProps {
   titleClassName?: string;
 }
 
-export function Modal({ open, title, onClose, children, className = "bg-white", titleClassName = "text-amber-950" }: ModalProps) {
+export function Modal({
+  open,
+  title,
+  onClose,
+  children,
+  className = "bg-white",
+  titleClassName = "text-amber-950",
+}: ModalProps) {
   useEffect(() => {
     if (!open) return;
 

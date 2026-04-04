@@ -39,6 +39,11 @@ export interface TranslationDict {
     filter: string;
     filterAll: string;
   };
+  footer: {
+    tagline: string;
+    disclaimer: string;
+    madeBy: string;
+  };
 }
 
 const translations: Record<Language, TranslationDict> = {
@@ -57,7 +62,8 @@ const translations: Record<Language, TranslationDict> = {
       },
       villagers: {
         title: "Aldeanos",
-        description: "Descubre regalos favoritos, cumpleaños y más sobre los aldeanos de Pelican Town.",
+        description:
+          "Descubre regalos favoritos, cumpleaños y más sobre los aldeanos de Pelican Town.",
       },
       museum: {
         title: "Museo",
@@ -77,6 +83,11 @@ const translations: Record<Language, TranslationDict> = {
       today: "Hoy",
       filter: "Filtro",
       filterAll: "Todo",
+    },
+    footer: {
+      tagline: "Stardew Guide — El compañero definitivo",
+      disclaimer: "Herramienta independiente hecha para fans. No afiliado con ConcernedApe.",
+      madeBy: "Hecho por",
     },
   },
   en: {
@@ -115,6 +126,11 @@ const translations: Record<Language, TranslationDict> = {
       filter: "Filter",
       filterAll: "All",
     },
+    footer: {
+      tagline: "Stardew Guide — Ultimate Companion",
+      disclaimer: "Independent tool made by fans. Not affiliated with ConcernedApe.",
+      madeBy: "Made by",
+    },
   },
   pt: {
     nav: {
@@ -127,11 +143,13 @@ const translations: Record<Language, TranslationDict> = {
     pages: {
       calendar: {
         title: "Calendário Sazonal",
-        description: "Planeje festivais, aniversários e colheitas por estação com visualização diária.",
+        description:
+          "Planeje festivais, aniversários e colheitas por estação com visualização diária.",
       },
       villagers: {
         title: "Aldeões",
-        description: "Descubra presentes favoritos, aniversários e mais sobre os aldeões de Pelican Town.",
+        description:
+          "Descubra presentes favoritos, aniversários e mais sobre os aldeões de Pelican Town.",
       },
       museum: {
         title: "Museu",
@@ -152,6 +170,11 @@ const translations: Record<Language, TranslationDict> = {
       filter: "Filtro",
       filterAll: "Tudo",
     },
+    footer: {
+      tagline: "Stardew Guide — O companheiro definitivo",
+      disclaimer: "Ferramenta independente feita por fãs. Não é afiliado à ConcernedApe.",
+      madeBy: "Feito por",
+    },
   },
   fr: {
     nav: {
@@ -164,11 +187,13 @@ const translations: Record<Language, TranslationDict> = {
     pages: {
       calendar: {
         title: "Calendrier Saisonnier",
-        description: "Planifiez les festivals, anniversaires et récoltes par saison avec vue quotidienne.",
+        description:
+          "Planifiez les festivals, anniversaires et récoltes par saison avec vue quotidienne.",
       },
       villagers: {
         title: "Villageois",
-        description: "Découvrez les cadeaux préférés, anniversaires et plus sur les villageois de Pelican Town.",
+        description:
+          "Découvrez les cadeaux préférés, anniversaires et plus sur les villageois de Pelican Town.",
       },
       museum: {
         title: "Musée",
@@ -188,6 +213,11 @@ const translations: Record<Language, TranslationDict> = {
       today: "Aujourd'hui",
       filter: "Filtre",
       filterAll: "Tous",
+    },
+    footer: {
+      tagline: "Stardew Guide — Le compagnon ultime",
+      disclaimer: "Outil indépendant créé par des fans. Pas affilié à ConcernedApe.",
+      madeBy: "Fait par",
     },
   },
 };

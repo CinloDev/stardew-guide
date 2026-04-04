@@ -1,8 +1,8 @@
 "use client";
 
+import type { FestivalEvent } from "@/data/festivals";
 import type { Season } from "@/lib/constants";
 import type { CalendarEvent } from "../utils/getSeasonEvents";
-import { type FestivalEvent } from "@/data/festivals";
 import { CalendarDay } from "./CalendarDay";
 
 interface CalendarGridProps {
@@ -17,7 +17,14 @@ interface CalendarGridProps {
 const days = Array.from({ length: 28 }, (_, index) => index + 1);
 const weekDays = ["Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"];
 
-export function CalendarGrid({ season, events, currentDay, isCurrentSeason, showVendors, onEventClick }: CalendarGridProps) {
+export function CalendarGrid({
+  season,
+  events,
+  currentDay,
+  isCurrentSeason,
+  showVendors,
+  onEventClick,
+}: CalendarGridProps) {
   return (
     <section className="w-full min-w-0 space-y-1 sm:space-y-2 overflow-x-hidden">
       {/* Header: Weekdays */}

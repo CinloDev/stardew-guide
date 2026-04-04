@@ -1,193 +1,79 @@
-# 🌾 Stardew Valley Guide
+# 🌾 Stardew Guide | Interactive Companion
 
-An interactive companion app for **Stardew Valley** players.
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://stardewguide.vercel.app)
+[![Tech Stack](https://img.shields.io/badge/stack-Next.js%20|%20TS%20|%20Zustand-blue)](https://nextjs.org)
 
-Track museum progress, discover NPC gift preferences, browse cooking recipes and check seasonal events — all in one place.
+**Stardew Guide** is a high-performance, mobile-first companion application designed to optimize the gaming experience for Stardew Valley players.
 
-Designed as a **scalable frontend architecture project**, starting with static datasets and evolving toward a full backend implementation.
-
----
-
-# 🚀 Live Demo
-
-https://stardewguide.vercel.app
+Designed as a **scalable frontend architecture project**, it centralizes seasonal planning, NPC interaction data, and museum collection progress within a premium interface.
 
 ---
 
-# ✨ Features
+## ✨ Features
 
-* 📅 **Seasonal calendar** with festivals and events
-* 🎁 **NPC gift guide** and birthday tracker
-* 🏛️ **Interactive museum tracker**
-* 📖 **Cooking recipes database**
-* 💾 Progress saved using **localStorage**
-* 📱 Fully **responsive UI**
-
----
-
-# 🧰 Tech Stack
-
-* **Next.js (App Router)**
-* **React**
-* **TypeScript**
-* **TailwindCSS**
-* **Zustand** – global state management
-* **Biome** – linting and formatting
-* **Prisma** – database layer preparation
-* **Vercel** – deployment
+*   📅 **Dynamic Seasonal Dashboard**: Real-time highlights for festivals, birthdays, and vendor availability based on manual game-date synchronization.
+*   👥 **Villager Intelligence**: Deep-dive into NPC gift preferences and birthday alerts.
+*   🏛️ **Interactive Museum Tracker**: Log donations and track geoda-only minerals.
+*   🍳 **Cooking Database**: Complete recipe guide with acquisition methods.
+*   💾 **Persistent State**: Progress is saved using a client-side strategy, ensuring a seamless experience without a backend.
+*   📱 **Premium UI**: Adaptive design for desktop and mobile with smooth micro-animations.
 
 ---
 
-# 🧱 Project Architecture
+## 🛠️ Technical Showcase
 
-The project follows a **feature-based architecture**, separating UI components, domain logic and datasets.
+This project serves as a demonstration of modern web engineering patterns:
 
+### 🏗️ Feature-Based Architecture
+The codebase follows a modular structure where each functional unit (Calendar, Museum, Villagers) isolates its own components, logic, and types. This prevents "prop drilling" and ensures effortless scalability.
+
+```text
 src/
-│
-├── app/              → Next.js routes and pages
-├── components/       → reusable UI components
-├── features/         → domain logic and feature modules
-├── data/             → game datasets (JSON)
-├── store/            → global state (Zustand)
-├── types/            → TypeScript models
-│
-└── prisma/           → database schema for future backend
+├── features/        # Isolated functional modules
+│   ├── calendar/    # Logic, utils & components for game-time
+│   ├── museum/      # Tracking logic
+│   └── villagers/   # NPC data and gift preference UI
+├── store/           # Global state (Zustand)
+└── components/      # Shared UI primitives
+```
 
-This structure allows the application to **start simple with static data and scale to a full backend** without major refactoring.
+### ⚡ State Management & Persistence
+Using **Zustand**, I implemented a "Game Date Sync" system. Users manually set their in-game season and day, and the entire app adapts instantly. This state is persisted to `localStorage`, mimicking a backend-like persistence with zero latency.
+
+### 🎨 Design System
+Built with **TailwindCSS 4**, the UI uses a custom color palette that shifts dynamically with the game's current season (Spring, Summer, Fall, Winter), enhancing immersion through visual feedback.
 
 ---
 
-# 📊 Data Strategy
+## 🚀 Getting Started
 
-Current data sources:
+1.  **Clone & Install**:
+    ```bash
+    git clone https://github.com/yourusername/stardew-guide.git
+    cd stardew-guide
+    npm install
+    ```
 
-* Static **JSON datasets** located in `src/data`
-* User progress stored in **localStorage**
+2.  **Run Development**:
+    ```bash
+    npm run dev
+    ```
 
-The repository already includes:
-
-* an API route for progress handling
-* a Prisma schema
-
-This prepares the project for **future migration to PostgreSQL**.
-
----
-
-# 🧪 Future Backend Integration
-
-Planned architecture evolution:
-
-Frontend (Next.js)
-⬇
-API Routes
-⬇
-Prisma ORM
-⬇
-PostgreSQL
-
-This ensures the current architecture remains compatible with a **full stack upgrade**.
+3.  **Build for Production**:
+    ```bash
+    npm run build
+    ```
 
 ---
 
-# 🖥️ Local Development
+## 📑 Portfolio Integration
 
-Install dependencies:
+If you are a recruiter or developer looking at this code, you can find more about the architectural decisions by clicking the **"About the Code"** button in the application footer.
 
-```
-npm install
-```
-
-Run the development server:
-
-```
-npm run dev
-```
-
-Open:
-
-```
-http://localhost:3000
-```
+Developed by [CinloDev](https://www.cinlodev.com) 🚀
 
 ---
 
-# ⚙️ Available Scripts
+## 📜 License
 
-Development
-
-```
-npm run dev
-npm run build
-npm run start
-```
-
-Code quality
-
-```
-npm run lint
-npm run format
-npm run check
-```
-
-Database
-
-```
-npm run prisma:generate
-npm run prisma:migrate
-```
-
-Data generation
-
-```
-npm run generate:data
-```
-
----
-
-# 🗺️ Roadmap
-
-Planned improvements:
-
-* Connect progress persistence to **PostgreSQL**
-* Complete **Stardew Valley datasets**
-* Add **user authentication**
-* Improve search and filtering
-* Add **unit and integration tests**
-* Crop planner tool
-* Mobile UX improvements
-* Mod compatibility
-
----
-
-# 🎯 Project Goals
-
-This project was created to practice:
-
-* scalable frontend architecture
-* feature-based project structure
-* state management patterns
-* progressive backend integration
-* production-ready deployment
-
----
-
-# 📷 Screenshots
-
-*(To be added)*
-
-Recommended structure:
-
-docs/
-calendar.png
-museum.png
-recipes.png
-
----
-
-# 📜 License
-
-MIT
-
----
-
-⭐ If you like the project, consider starring the repository.
+MIT © [CinloDev]
