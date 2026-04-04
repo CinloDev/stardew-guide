@@ -1,8 +1,12 @@
+"use client";
+
 import getTranslations from "@/lib/i18n";
+import { useGameStore } from "@/store/useGameStore";
 import Link from "next/link";
 
 export function Footer() {
-  const t = getTranslations("es"); // Defaulting to Spanish for now
+  const { language } = useGameStore();
+  const t = getTranslations(language);
 
   return (
     <footer className="mt-12 border-t border-stone-200 bg-stone-50/50 py-10">

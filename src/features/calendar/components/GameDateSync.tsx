@@ -1,7 +1,7 @@
 "use client";
 
-import { seasonLabels } from "@/data/seasons";
 import { SEASONS, type Season } from "@/lib/constants";
+import getTranslations from "@/lib/i18n";
 import { useGameStore } from "@/store/useGameStore";
 import { useEffect, useRef, useState } from "react";
 
@@ -46,10 +46,11 @@ const getSeasonStyles = (season: Season) => {
 };
 
 export function GameDateSync() {
-  const { season, day, setSeason, setDay, nextDay, prevDay } = useGameStore();
+  const { season, day, language, setSeason, setDay, nextDay, prevDay } = useGameStore();
   const [isDayPickerOpen, setIsDayPickerOpen] = useState(false);
   const pickerRef = useRef<HTMLDivElement>(null);
   const styles = getSeasonStyles(season);
+  const t = getTranslations(language);
 
   // Close picker when clicking outside
   useEffect(() => {
@@ -78,102 +79,95 @@ export function GameDateSync() {
               onClick={() => setSeason(s)}
               className={`flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-bold transition-all active:scale-95 shadow-sm sm:shadow-none ${
                 season === s
-                  ? `${styles.active} text-white ring-2`
+                  ? `${styles.active} text-white ring-2 translate-y-[-2px] shadow-lg`
                   : "bg-white/80 text-stone-600 hover:bg-white"
               }`}
             >
               <span className="text-base leading-none">
                 {s === "spring" ? "🌸" : s === "summer" ? "☀️" : s === "fall" ? "🍂" : "❄️"}
               </span>
-              <span className="hidden xs:inline">{seasonLabels[s]}</span>
+              <span className="hidden xs:inline">
+                {t.home.seasons[s as keyof typeof t.home.seasons]}
+              </span>
             </button>
           ))}
         </div>
 
-        {/* Day & Controls */}
-        <div className="flex items-center justify-between gap-2 bg-white/60 rounded-2xl p-1 pr-3 shadow-inner">
-          <div className="flex items-center gap-0.5 sm:gap-1">
+        {/* Day & Controls Redesign */}
+        <div className="flex items-center gap-1.5 self-center sm:self-auto">
+          {/* Previous Day Button */}
+          <button
+            type="button"
+            onClick={prevDay}
+            className="flex items-center gap-1.5 rounded-xl border border-stone-200 bg-white/80 px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-stone-500 transition hover:bg-white hover:text-stone-800 active:scale-95"
+          >
+            <span className="text-sm">‹</span>
+            <span className="hidden xs:inline">{t.home.prevDay}</span>
+          </button>
+
+          {/* Centered Day Display */}
+          <div className="relative" ref={pickerRef}>
             <button
               type="button"
-              onClick={prevDay}
-              className="flex h-10 w-8 sm:w-10 items-center justify-center rounded-lg text-stone-400 hover:bg-white/80 hover:text-stone-600 transition"
-              aria-label="Día anterior"
+              onClick={() => setIsDayPickerOpen(!isDayPickerOpen)}
+              className="flex min-w-[70px] flex-col items-center rounded-2xl bg-white p-1 shadow-sm ring-1 ring-stone-200 transition hover:ring-amber-400 group"
             >
-              ‹
+              <span className="text-[10px] font-bold uppercase tracking-widest text-stone-400 group-hover:text-amber-600">
+                Día
+              </span>
+              <span className="text-xl font-black text-stone-800 leading-none">{day}</span>
             </button>
 
-            {/* Clickable Day Number */}
-            <div className="relative" ref={pickerRef}>
-              <button
-                type="button"
-                onClick={() => setIsDayPickerOpen(!isDayPickerOpen)}
-                className="group flex flex-col items-center px-3 sm:px-4 py-1 rounded-xl transition hover:bg-white/80"
-              >
-                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-stone-400 leading-none group-hover:text-amber-600">
-                  Día
-                </span>
-                <span className="text-lg font-black text-stone-800 leading-none mt-1">{day}</span>
-              </button>
+            {/* Day Picker Dropdown */}
+            {isDayPickerOpen && (
+              <>
+                {/* Backdrop for mobile only */}
+                <div className="fixed inset-0 z-[120] bg-stone-900/10 backdrop-blur-[1px] sm:hidden" />
 
-              {/* Day Picker */}
-              {isDayPickerOpen && (
-                <>
-                  {/* Backdrop for mobile only */}
-                  <div className="fixed inset-0 z-[55] bg-stone-900/10 backdrop-blur-[1px] sm:hidden" />
-
-                  <div className="fixed inset-x-4 top-[20%] z-[60] mx-auto w-auto max-w-[280px] rounded-3xl border border-stone-200 bg-white p-5 shadow-2xl animate-in fade-in zoom-in slide-in-from-top-4 duration-300 sm:absolute sm:top-14 sm:inset-x-auto sm:left-0 sm:sm:-left-20 sm:w-64 sm:rounded-2xl sm:p-3 sm:shadow-2xl">
-                    <div className="mb-3 px-1 text-[10px] font-bold uppercase tracking-widest text-stone-400 sm:mb-2">
-                      Saltar al Día
-                    </div>
-                    <div className="grid grid-cols-7 gap-2 sm:gap-1">
-                      {Array.from({ length: 28 }, (_, i) => i + 1).map((d) => (
-                        <button
-                          type="button"
-                          key={d}
-                          onClick={() => {
-                            setDay(d);
-                            setIsDayPickerOpen(false);
-                          }}
-                          className={`flex h-9 w-9 items-center justify-center rounded-xl text-sm font-bold transition active:scale-90 sm:h-8 sm:w-8 sm:rounded-lg sm:text-xs ${
-                            day === d
-                              ? `${styles.dayActive} text-white shadow-md`
-                              : `text-stone-600 ${styles.dayHover}`
-                          }`}
-                        >
-                          {d}
-                        </button>
-                      ))}
-                    </div>
-                    {/* Close button for mobile only */}
-                    <button
-                      type="button"
-                      onClick={() => setIsDayPickerOpen(false)}
-                      className="mt-4 w-full rounded-xl bg-stone-100 py-2 text-[10px] font-bold uppercase tracking-wider text-stone-500 sm:hidden"
-                    >
-                      Cerrar
-                    </button>
+                <div className="fixed inset-x-4 top-[20%] z-[130] mx-auto w-auto max-w-[280px] rounded-3xl border border-stone-200 bg-white p-5 shadow-2xl animate-in fade-in zoom-in slide-in-from-top-4 duration-300 sm:absolute sm:top-14 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 sm:w-64 sm:rounded-2xl sm:p-3 sm:shadow-2xl">
+                  <div className="mb-3 px-1 text-[10px] font-bold uppercase tracking-widest text-stone-400 sm:mb-2 text-center">
+                    Saltar al Día
                   </div>
-                </>
-              )}
-            </div>
-
-            <button
-              type="button"
-              onClick={nextDay}
-              className="flex h-10 w-8 sm:w-10 items-center justify-center rounded-lg text-stone-400 hover:bg-white/80 hover:text-stone-600 transition"
-              aria-label="Siguiente día"
-            >
-              ›
-            </button>
+                  <div className="grid grid-cols-7 gap-2 sm:gap-1">
+                    {Array.from({ length: 28 }, (_, i) => i + 1).map((d) => (
+                      <button
+                        type="button"
+                        key={d}
+                        onClick={() => {
+                          setDay(d);
+                          setIsDayPickerOpen(false);
+                        }}
+                        className={`flex h-9 w-9 items-center justify-center rounded-xl text-sm font-bold transition active:scale-90 sm:h-8 sm:w-8 sm:rounded-lg sm:text-xs ${
+                          day === d
+                            ? `${styles.dayActive} text-white shadow-md`
+                            : `text-stone-600 ${styles.dayHover}`
+                        }`}
+                      >
+                        {d}
+                      </button>
+                    ))}
+                  </div>
+                  {/* Close button for mobile only */}
+                  <button
+                    type="button"
+                    onClick={() => setIsDayPickerOpen(false)}
+                    className="mt-4 w-full rounded-xl bg-stone-100 py-2 text-[10px] font-bold uppercase tracking-wider text-stone-500 sm:hidden"
+                  >
+                    Cerrar
+                  </button>
+                </div>
+              </>
+            )}
           </div>
 
+          {/* Next Day Button */}
           <button
             type="button"
             onClick={nextDay}
-            className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-bold text-white shadow-md transition active:scale-95 whitespace-nowrap ${styles.active} hover:brightness-110`}
+            className="flex items-center gap-1.5 rounded-xl border border-stone-200 bg-white/80 px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-stone-500 transition hover:bg-white hover:text-stone-800 active:scale-95"
           >
-            <span>Siguiente Día</span>
-            <span className="opacity-70 text-base">➔</span>
+            <span className="hidden xs:inline">{t.home.nextDay}</span>
+            <span className="text-sm">›</span>
           </button>
         </div>
       </div>

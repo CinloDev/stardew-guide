@@ -5,6 +5,7 @@ import villagersData from "@/data/villagers.json";
 import { CalendarEventModal } from "@/features/calendar/components/CalendarEventModal";
 import { GameDateSync } from "@/features/calendar/components/GameDateSync";
 import { type CalendarEvent, getSeasonEvents } from "@/features/calendar/utils/getSeasonEvents";
+import getTranslations from "@/lib/i18n";
 import { useGameStore } from "@/store/useGameStore";
 import Image from "next/image";
 import Link from "next/link";
@@ -51,9 +52,10 @@ const getSeasonStyles = (season: string) => {
 };
 
 export default function Home() {
-  const { season, day } = useGameStore();
+  const { season, day, language } = useGameStore();
   const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
   const styles = getSeasonStyles(season);
+  const t = getTranslations(language);
 
   // Get events for the current MANUAL game season
   const allSeasonEvents = useMemo(() => {
@@ -74,29 +76,29 @@ export default function Home() {
 
   const sections = [
     {
-      title: "Calendario",
-      desc: "Eventos, cumpleaños y siembra.",
+      title: t.home.sectionCalendar,
+      desc: t.home.sectionCalendarDesc,
       href: "/calendar",
       icon: "📅",
       color: "bg-amber-100",
     },
     {
-      title: "Aldeanos",
-      desc: "Guía de regalos y amistad.",
+      title: t.home.sectionVillagers,
+      desc: t.home.sectionVillagersDesc,
       href: "/villagers",
       icon: "👥",
       color: "bg-rose-100",
     },
     {
-      title: "Museo",
-      desc: "Rastreador de donaciones y geodas.",
+      title: t.home.sectionMuseum,
+      desc: t.home.sectionMuseumDesc,
       href: "/museum",
       icon: "⛏️",
       color: "bg-stone-200",
     },
     {
-      title: "Recetas",
-      desc: "Recetario y formas de obtención.",
+      title: t.home.sectionRecipes,
+      desc: t.home.sectionRecipesDesc,
       href: "/recipes",
       icon: "🍳",
       color: "bg-orange-100",
@@ -116,18 +118,18 @@ export default function Home() {
           <div className="flex items-center gap-2">
             <span className={`inline-block h-2 w-12 rounded-full ${styles.accent}`} />
             <p className={`text-xs font-bold uppercase tracking-widest ${styles.text} opacity-70`}>
-              Estado en tu partida
+              {t.home.heroSubtitle}
             </p>
           </div>
           <h1
             className={`mt-4 text-4xl font-bold tracking-tight ${styles.text} sm:text-6xl font-serif`}
           >
-            {seasonLabels[season]} {day}
+            {t.home.seasons[season as keyof typeof t.home.seasons]} {day}
           </h1>
           <p
             className={`mt-4 max-w-xl text-lg font-medium ${styles.text} opacity-80 leading-relaxed`}
           >
-            ¡Bienvenido de nuevo a tu granja! Aquí tienes lo que está ocurriendo hoy en el valle.
+            {t.home.heroWelcome}
           </p>
         </div>
         {/* Abstract seasonal decoration */}
@@ -140,7 +142,7 @@ export default function Home() {
       <section className="space-y-4">
         <div className="flex items-center gap-3 px-1">
           <span className="text-xl">✨</span>
-          <h2 className="text-xl font-bold text-stone-800">Resumen de Hoy</h2>
+          <h2 className="text-xl font-bold text-stone-800">{t.home.summaryTitle}</h2>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -162,19 +164,19 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="text-[10px] font-bold uppercase tracking-wider text-pink-500">
-                    Cumpleaños
+                    {t.home.birthdayLabel}
                   </p>
                   <h3 className="text-lg font-bold text-stone-800">
-                    ¡Es el cumple de {birthdayToday.name}!
+                    {t.home.birthdayToday.replace("{name}", birthdayToday.name)}
                   </h3>
-                  <p className="text-xs text-stone-500">Toca para ver sus favoritos</p>
+                  <p className="text-xs text-stone-500">{t.home.birthdayTap}</p>
                 </div>
               </div>
             </button>
           ) : (
             <div className="flex items-center justify-center rounded-2xl border border-dashed border-stone-200 bg-stone-50/50 p-6 opacity-60">
               <p className="text-sm font-medium text-stone-400 italic text-center">
-                Nadie cumple años hoy
+                {t.home.noBirthdays}
               </p>
             </div>
           )}
@@ -192,13 +194,13 @@ export default function Home() {
                 </div>
                 <div className="flex-1">
                   <p className="text-[10px] font-bold uppercase tracking-wider text-amber-600">
-                    Festival / Evento
+                    {t.home.festivalLabel}
                   </p>
                   <h3 className="text-lg font-bold text-stone-800 leading-tight">
                     {festivalToday.name}
                   </h3>
                   <p className="text-xs text-stone-500">
-                    {"location" in festivalToday ? festivalToday.location : "Todo el valle"}
+                    {"location" in festivalToday ? festivalToday.location : t.home.defaultLocation}
                   </p>
                 </div>
               </div>
@@ -206,7 +208,7 @@ export default function Home() {
           ) : (
             <div className="flex items-center justify-center rounded-2xl border border-dashed border-stone-200 bg-stone-50/50 p-6 opacity-60">
               <p className="text-sm font-medium text-stone-400 italic text-center">
-                Sin festivales hoy
+                {t.home.noFestivals}
               </p>
             </div>
           )}
@@ -214,24 +216,24 @@ export default function Home() {
           {/* Shops & Vendors Summary */}
           <div className="flex flex-col gap-2 rounded-2xl border border-stone-200 bg-stone-50/80 p-4 shadow-sm">
             <h3 className="text-xs font-bold uppercase tracking-wider text-stone-500">
-              Puestos y Tiendas
+              {t.home.vendorsTitle}
             </h3>
             <div className="mt-1 space-y-2">
               <div
                 className={`flex items-center gap-2 rounded-lg p-2 text-xs transition ${isTravelingCart ? "bg-emerald-100 text-emerald-800 font-bold border border-emerald-200" : "bg-stone-100 text-stone-400 opacity-60"}`}
               >
                 <span>🚚</span>{" "}
-                {isTravelingCart ? "¡Carro Ambulante hoy!" : "El Carro está cerrado"}
+                {isTravelingCart ? t.home.travelingCartOpen : t.home.travelingCartClosed}
               </div>
               <div
                 className={`flex items-center gap-2 rounded-lg p-2 text-xs transition ${isKrobus ? "bg-purple-100 text-purple-800 font-bold border border-purple-200" : "bg-stone-100 text-stone-400 opacity-60"}`}
               >
-                <span> sewer </span> {isKrobus ? "Ofertas en Krobus" : "Alcantarillas vacías"}
+                <span> sewer </span> {isKrobus ? t.home.krobusOpen : t.home.krobusClosed}
               </div>
               <div
                 className={`flex items-center gap-2 rounded-lg p-2 text-xs transition ${isQueenOfSauce ? "bg-rose-100 text-rose-800 font-bold border border-rose-200" : "bg-stone-100 text-stone-400 opacity-60"}`}
               >
-                <span>📺</span> {isQueenOfSauce ? "Receta nueva en la Tele" : "Pausa televisiva"}
+                <span>📺</span> {isQueenOfSauce ? t.home.queenOfSauceOpen : t.home.queenOfSauceClosed}
               </div>
             </div>
           </div>
@@ -240,7 +242,7 @@ export default function Home() {
 
       {/* Main Navigation Grid */}
       <section className="space-y-4">
-        <h2 className="px-1 text-xl font-bold text-stone-800">Herramientas</h2>
+        <h2 className="px-1 text-xl font-bold text-stone-800">{t.home.toolsTitle}</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {sections.map((section) => (
             <Link
@@ -260,7 +262,7 @@ export default function Home() {
                 <p className="mt-2 text-sm leading-relaxed text-stone-500">{section.desc}</p>
               </div>
               <div className="mt-6 flex items-center justify-end text-sm font-bold text-stone-300 group-hover:text-amber-600">
-                <span>Entrar</span>
+                <span>{t.home.enterButton}</span>
                 <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
               </div>
             </Link>
