@@ -27,7 +27,7 @@ export function GiftCard({ villager }: GiftCardProps) {
           <p className="mt-1 text-sm text-stone-600">Birthday: {villager.birthday}</p>
         </div>
       </div>
-      
+
       <div className="mt-4">
         <p className="text-sm text-stone-700">
           <span className="font-medium">Loved:</span> {villager.lovedGifts.join(", ")}

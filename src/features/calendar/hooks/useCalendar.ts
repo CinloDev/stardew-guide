@@ -1,21 +1,24 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { type Season, SEASONS } from "@/lib/constants";
 import { seasonOrder } from "@/data/seasons";
+import { SEASONS, type Season } from "@/lib/constants";
 import { useGameStore } from "@/store/useGameStore";
+import { useMemo, useState } from "react";
 import { type CalendarEventType, getSeasonEvents } from "../utils/getSeasonEvents";
 
 export type CalendarFilter = "all" | CalendarEventType;
 
 export function useCalendar() {
   const { season: gameSeason, day: gameDay } = useGameStore();
-  
+
   // Use the manual game date for "Today"
-  const today = useMemo(() => ({
-    season: gameSeason,
-    day: gameDay
-  }), [gameSeason, gameDay]);
+  const today = useMemo(
+    () => ({
+      season: gameSeason,
+      day: gameDay,
+    }),
+    [gameSeason, gameDay],
+  );
 
   // The calendar view can still be toggled to other seasons
   const [viewSeason, setViewSeason] = useState<Season>(gameSeason);

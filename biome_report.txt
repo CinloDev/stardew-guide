@@ -1,0 +1,341 @@
+.\src\app\page.tsx:149:13 lint/a11y/useKeyWithClickEvents ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Enforce to have the onClick mouse event with the onKeyUp, the onKeyDown, or the onKeyPress keyboard event.
+  
+    147 │           {/* Birthday Card */}
+    148 │           {birthdayToday ? (
+  > 149 │             <div
+        │             ^^^^
+  > 150 │               onClick={() => setSelectedEvent(birthdayToday)}
+  > 151 │               className="group cursor-pointer overflow-hidden rounded-2xl border border-stone-200 bg-white p-4 shadow-sm transition hover:border-pink-300 hover:shadow-md"
+  > 152 │             >
+        │             ^
+    153 │               <div className="flex items-center gap-4">
+    154 │                 <div className="relative h-16 w-16 overflow-hidden rounded-xl bg-pink-50 ring-2 ring-pink-50 group-hover:ring-pink-200">
+  
+  i Actions triggered using mouse events should have corresponding keyboard events to account for keyboard-only navigation.
+  
+
+.\src\app\page.tsx:183:13 lint/a11y/useKeyWithClickEvents ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Enforce to have the onClick mouse event with the onKeyUp, the onKeyDown, or the onKeyPress keyboard event.
+  
+    181 │           {/* Festival or Special Event Card */}
+    182 │           {festivalToday ? (
+  > 183 │             <div
+        │             ^^^^
+  > 184 │               onClick={() => setSelectedEvent(festivalToday)}
+  > 185 │               className="group cursor-pointer overflow-hidden rounded-2xl border border-stone-200 bg-white p-4 shadow-sm transition hover:border-amber-300 hover:shadow-md"
+  > 186 │             >
+        │             ^
+    187 │               <div className="flex items-center gap-4">
+    188 │                 <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-amber-50 text-3xl shadow-inner group-hover:scale-110 transition">
+  
+  i Actions triggered using mouse events should have corresponding keyboard events to account for keyboard-only navigation.
+  
+
+.\src\components\portfolio\PortfolioInfo.tsx:58:11 lint/style/useSelfClosingElements  FIXABLE  ━━━━━━━━━━
+
+  × JSX elements without children should be marked as self-closing. In JSX, it is valid for any element to be self-closing.
+  
+    56 │       >
+    57 │         <span className="relative flex h-2 w-2">
+  > 58 │           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75"></span>
+       │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    59 │           <span className="relative inline-flex h-2 w-2 rounded-full bg-blue-500"></span>
+    60 │         </span>
+  
+  i Unsafe fix: Use a SelfClosingElement instead
+  
+     56  56 │         >
+     57  57 │           <span className="relative flex h-2 w-2">
+     58     │ - ··········<span·className="absolute·inline-flex·h-full·w-full·animate-ping·rounded-full·bg-blue-400·opacity-75"></span>
+         58 │ + ··········<span·className="absolute·inline-flex·h-full·w-full·animate-ping·rounded-full·bg-blue-400·opacity-75"·/>
+     59  59 │             <span className="relative inline-flex h-2 w-2 rounded-full bg-blue-500"></span>
+     60  60 │           </span>
+  
+
+.\src\components\portfolio\PortfolioInfo.tsx:59:11 lint/style/useSelfClosingElements  FIXABLE  ━━━━━━━━━━
+
+  × JSX elements without children should be marked as self-closing. In JSX, it is valid for any element to be self-closing.
+  
+    57 │         <span className="relative flex h-2 w-2">
+    58 │           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75"></span>
+  > 59 │           <span className="relative inline-flex h-2 w-2 rounded-full bg-blue-500"></span>
+       │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    60 │         </span>
+    61 │         {t.title}
+  
+  i Unsafe fix: Use a SelfClosingElement instead
+  
+     57  57 │           <span className="relative flex h-2 w-2">
+     58  58 │             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75"></span>
+     59     │ - ··········<span·className="relative·inline-flex·h-2·w-2·rounded-full·bg-blue-500"></span>
+         59 │ + ··········<span·className="relative·inline-flex·h-2·w-2·rounded-full·bg-blue-500"·/>
+     60  60 │           </span>
+     61  61 │           {t.title}
+  
+
+.\src\components\portfolio\PortfolioInfo.tsx:67:11 lint/a11y/useKeyWithClickEvents ━━━━━━━━━━━━━━━━━
+
+  × Enforce to have the onClick mouse event with the onKeyUp, the onKeyDown, or the onKeyPress keyboard event.
+  
+    65 │         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    66 │           {/* Backdrop */}
+  > 67 │           <div
+       │           ^^^^
+  > 68 │             className="absolute inset-0 bg-stone-900/60 backdrop-blur-sm transition-opacity"
+  > 69 │             onClick={() => setIsOpen(false)}
+  > 70 │           />
+       │           ^^
+    71 │ 
+    72 │           {/* Modal */}
+  
+  i Actions triggered using mouse events should have corresponding keyboard events to account for keyboard-only navigation.
+  
+
+.\src\components\portfolio\PortfolioInfo.tsx:53:7 lint/a11y/useButtonType ━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Provide an explicit type prop for the button element.
+  
+    51 │   return (
+    52 │     <>
+  > 53 │       <button
+       │       ^^^^^^^
+  > 54 │         onClick={() => setIsOpen(true)}
+  > 55 │         className="mt-4 inline-flex items-center gap-2 rounded-full bg-blue-600 px-4 py-1.5 text-xs font-bold text-white transition-all hover:bg-blue-700 hover:shadow-lg active:scale-95"
+  > 56 │       >
+       │       ^
+    57 │         <span className="relative flex h-2 w-2">
+    58 │           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75"></span>
+  
+  i The default type of a button is submit, which causes the submission of a form when placed inside a `form` element. This is likely not the behaviour that you want inside a React application.
+  
+  i Allowed button types are: submit, button or reset
+  
+
+.\src\components\portfolio\PortfolioInfo.tsx:78:17 lint/a11y/useButtonType ━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Provide an explicit type prop for the button element.
+  
+    76 │               <h3 className="text-lg font-bold text-stone-800">{t.title}</h3>
+    77 │               <div className="flex gap-1 rounded-lg bg-stone-200 p-1">
+  > 78 │                 <button
+       │                 ^^^^^^^
+  > 79 │                   onClick={() => setLang("es")}
+  > 80 │                   className={`rounded px-2 py-0.5 text-[10px] font-bold transition ${lang === "es" ? "bg-white text-blue-600 shadow-sm" : "text-stone-500 hover:text-stone-700"}`}
+  > 81 │                 >
+       │                 ^
+    82 │                   ES
+    83 │                 </button>
+  
+  i The default type of a button is submit, which causes the submission of a form when placed inside a `form` element. This is likely not the behaviour that you want inside a React application.
+  
+  i Allowed button types are: submit, button or reset
+  
+
+.\src\components\portfolio\PortfolioInfo.tsx:84:17 lint/a11y/useButtonType ━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Provide an explicit type prop for the button element.
+  
+    82 │                   ES
+    83 │                 </button>
+  > 84 │                 <button
+       │                 ^^^^^^^
+  > 85 │                   onClick={() => setLang("en")}
+  > 86 │                   className={`rounded px-2 py-0.5 text-[10px] font-bold transition ${lang === "en" ? "bg-white text-blue-600 shadow-sm" : "text-stone-500 hover:text-stone-700"}`}
+  > 87 │                 >
+       │                 ^
+    88 │                   EN
+    89 │                 </button>
+  
+  i The default type of a button is submit, which causes the submission of a form when placed inside a `form` element. This is likely not the behaviour that you want inside a React application.
+  
+  i Allowed button types are: submit, button or reset
+  
+
+.\src\components\portfolio\PortfolioInfo.tsx:124:17 lint/a11y/useButtonType ━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Provide an explicit type prop for the button element.
+  
+    122 │                   {t.by} <span className="font-bold text-blue-600">CinloDev</span>
+    123 │                 </p>
+  > 124 │                 <button
+        │                 ^^^^^^^
+  > 125 │                   onClick={() => setIsOpen(false)}
+  > 126 │                   className="rounded-xl bg-stone-800 px-4 py-2 text-xs font-bold text-white transition hover:bg-stone-700 active:scale-95 shadow-md"
+  > 127 │                 >
+        │                 ^
+    128 │                   {t.close}
+    129 │                 </button>
+  
+  i The default type of a button is submit, which causes the submission of a form when placed inside a `form` element. This is likely not the behaviour that you want inside a React application.
+  
+  i Allowed button types are: submit, button or reset
+  
+
+.\src\features\calendar\components\CalendarDay.tsx:34:71 lint/suspicious/noExplicitAny ━━━━━━━━━━━━━
+
+  × Unexpected any. Specify a different type.
+  
+    32 │   | { type: "festival"; data: CalendarEvent }
+    33 │   | { type: "vendor-tv"; data: { name: string; icon: string } }
+  > 34 │   | { type: "vendor"; data: { name: string; icon: string; vendorData: any } };
+       │                                                                       ^^^
+    35 │ 
+    36 │ export function CalendarDay({
+  
+  i any disables many type checking rules. Its use should be avoided.
+  
+
+.\src\features\calendar\components\GameDateSync.tsx:75:13 lint/a11y/useButtonType ━━━━━━━━━━━━━━━━━━
+
+  × Provide an explicit type prop for the button element.
+  
+    73 │         <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
+    74 │           {SEASONS.map((s) => (
+  > 75 │             <button
+       │             ^^^^^^^
+  > 76 │               key={s}
+        ...
+  > 82 │               }`}
+  > 83 │             >
+       │             ^
+    84 │               <span className="text-base leading-none">
+    85 │                 {s === "spring" ? "🌸" : s === "summer" ? "☀�" : s === "fall" ? "🍂" : "❄�"}
+  
+  i The default type of a button is submit, which causes the submission of a form when placed inside a `form` element. This is likely not the behaviour that you want inside a React application.
+  
+  i Allowed button types are: submit, button or reset
+  
+
+.\src\features\calendar\components\GameDateSync.tsx:95:13 lint/a11y/useButtonType ━━━━━━━━━━━━━━━━━━
+
+  × Provide an explicit type prop for the button element.
+  
+     93 │         <div className="flex items-center justify-between gap-2 bg-white/60 rounded-2xl p-1 pr-3 shadow-inner">
+     94 │           <div className="flex items-center gap-0.5 sm:gap-1">
+   > 95 │             <button
+        │             ^^^^^^^
+   > 96 │               onClick={prevDay}
+   > 97 │               className="flex h-10 w-8 sm:w-10 items-center justify-center rounded-lg text-stone-400 hover:bg-white/80 hover:text-stone-600 transition"
+   > 98 │               aria-label="Día anterior"
+   > 99 │             >
+        │             ^
+    100 │               ‹
+    101 │             </button>
+  
+  i The default type of a button is submit, which causes the submission of a form when placed inside a `form` element. This is likely not the behaviour that you want inside a React application.
+  
+  i Allowed button types are: submit, button or reset
+  
+
+.\src\features\calendar\components\GameDateSync.tsx:105:15 lint/a11y/useButtonType ━━━━━━━━━━━━━━━━━
+
+  × Provide an explicit type prop for the button element.
+  
+    103 │             {/* Clickable Day Number */}
+    104 │             <div className="relative" ref={pickerRef}>
+  > 105 │               <button
+        │               ^^^^^^^
+  > 106 │                 onClick={() => setIsDayPickerOpen(!isDayPickerOpen)}
+  > 107 │                 className="group flex flex-col items-center px-3 sm:px-4 py-1 rounded-xl transition hover:bg-white/80"
+  > 108 │               >
+        │               ^
+    109 │                 <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-stone-400 leading-none group-hover:text-amber-600">
+    110 │                   Día
+  
+  i The default type of a button is submit, which causes the submission of a form when placed inside a `form` element. This is likely not the behaviour that you want inside a React application.
+  
+  i Allowed button types are: submit, button or reset
+  
+
+.\src\features\calendar\components\GameDateSync.tsx:127:25 lint/a11y/useButtonType ━━━━━━━━━━━━━━━━━
+
+  × Provide an explicit type prop for the button element.
+  
+    125 │                     <div className="grid grid-cols-7 gap-2 sm:gap-1">
+    126 │                       {Array.from({ length: 28 }, (_, i) => i + 1).map((d) => (
+  > 127 │                         <button
+        │                         ^^^^^^^
+  > 128 │                           key={d}
+         ...
+  > 137 │                           }`}
+  > 138 │                         >
+        │                         ^
+    139 │                           {d}
+    140 │                         </button>
+  
+  i The default type of a button is submit, which causes the submission of a form when placed inside a `form` element. This is likely not the behaviour that you want inside a React application.
+  
+  i Allowed button types are: submit, button or reset
+  
+
+.\src\features\calendar\components\GameDateSync.tsx:144:21 lint/a11y/useButtonType ━━━━━━━━━━━━━━━━━
+
+  × Provide an explicit type prop for the button element.
+  
+    142 │                     </div>
+    143 │                     {/* Close button for mobile only */}
+  > 144 │                     <button
+        │                     ^^^^^^^
+  > 145 │                       onClick={() => setIsDayPickerOpen(false)}
+  > 146 │                       className="mt-4 w-full rounded-xl bg-stone-100 py-2 text-[10px] font-bold uppercase tracking-wider text-stone-500 sm:hidden"
+  > 147 │                     >
+        │                     ^
+    148 │                       Cerrar
+    149 │                     </button>
+  
+  i The default type of a button is submit, which causes the submission of a form when placed inside a `form` element. This is likely not the behaviour that you want inside a React application.
+  
+  i Allowed button types are: submit, button or reset
+  
+
+.\src\features\calendar\components\GameDateSync.tsx:155:13 lint/a11y/useButtonType ━━━━━━━━━━━━━━━━━
+
+  × Provide an explicit type prop for the button element.
+  
+    153 │             </div>
+    154 │ 
+  > 155 │             <button
+        │             ^^^^^^^
+  > 156 │               onClick={nextDay}
+  > 157 │               className="flex h-10 w-8 sm:w-10 items-center justify-center rounded-lg text-stone-400 hover:bg-white/80 hover:text-stone-600 transition"
+  > 158 │               aria-label="Siguiente día"
+  > 159 │             >
+        │             ^
+    160 │               ›
+    161 │             </button>
+  
+  i The default type of a button is submit, which causes the submission of a form when placed inside a `form` element. This is likely not the behaviour that you want inside a React application.
+  
+  i Allowed button types are: submit, button or reset
+  
+
+.\src\features\calendar\components\GameDateSync.tsx:164:11 lint/a11y/useButtonType ━━━━━━━━━━━━━━━━━
+
+  × Provide an explicit type prop for the button element.
+  
+    162 │           </div>
+    163 │ 
+  > 164 │           <button
+        │           ^^^^^^^
+  > 165 │             onClick={nextDay}
+  > 166 │             className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-bold text-white shadow-md transition active:scale-95 whitespace-nowrap ${styles.active} hover:brightness-110`}
+  > 167 │           >
+        │           ^
+    168 │             <span>Siguiente Día</span>
+    169 │             <span className="opacity-70 text-base">➔</span>
+  
+  i The default type of a button is submit, which causes the submission of a form when placed inside a `form` element. This is likely not the behaviour that you want inside a React application.
+  
+  i Allowed button types are: submit, button or reset
+  
+
+Checked 71 files in 16ms. No fixes applied.
+Found 17 errors.
+check ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Some errors were emitted while running checks.
+  
+

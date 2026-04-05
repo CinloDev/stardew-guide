@@ -1,14 +1,17 @@
 "use client";
 
-import { STORAGE_KEYS, type Season, SEASONS } from "@/lib/constants";
+import { SEASONS, STORAGE_KEYS, type Season } from "@/lib/constants";
+import { type Language } from "@/lib/i18n";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 interface GameState {
   season: Season;
   day: number;
+  language: Language;
   setSeason: (season: Season) => void;
   setDay: (day: number) => void;
+  setLanguage: (language: Language) => void;
   nextDay: () => void;
   prevDay: () => void;
 }
@@ -18,13 +21,16 @@ export const useGameStore = create<GameState>()(
     (set, get) => ({
       season: "spring",
       day: 1,
+      language: "es",
 
       setSeason: (season) => set({ season }),
-      
+
       setDay: (day) => {
         const clampedDay = Math.min(Math.max(day, 1), 28);
         set({ day: clampedDay });
       },
+
+      setLanguage: (language) => set({ language }),
 
       nextDay: () => {
         const { day, season } = get();
@@ -53,6 +59,6 @@ export const useGameStore = create<GameState>()(
     {
       name: STORAGE_KEYS.gameDate,
       storage: createJSONStorage(() => localStorage),
-    }
-  )
+    },
+  ),
 );
