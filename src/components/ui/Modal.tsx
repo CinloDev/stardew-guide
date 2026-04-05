@@ -9,6 +9,7 @@ interface ModalProps {
   children: React.ReactNode;
   className?: string;
   titleClassName?: string;
+  closeText?: string;
 }
 
 export function Modal({
@@ -18,6 +19,7 @@ export function Modal({
   children,
   className = "bg-white",
   titleClassName = "text-amber-950",
+  closeText = "Close",
 }: ModalProps) {
   useEffect(() => {
     if (!open) return;
@@ -44,7 +46,7 @@ export function Modal({
             onClick={onClose}
             className="rounded-md px-2 py-1 text-sm text-stone-600 hover:bg-stone-100"
           >
-            Close
+            {closeText}
           </button>
         </header>
         <div className="mt-4">{children}</div>

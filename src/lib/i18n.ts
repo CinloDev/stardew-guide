@@ -39,7 +39,10 @@ export interface TranslationDict {
     today: string;
     filter: string;
     filterAll: string;
+    close: string;
   };
+  locations: Record<string, string>;
+  festivalNames: Record<string, string>;
   footer: {
     tagline: string;
     disclaimer: string;
@@ -78,10 +81,29 @@ export interface TranslationDict {
     sectionCalendarDesc: string;
     sectionVillagers: string;
     sectionVillagersDesc: string;
+    sectionCommunityCenter: string;
+    sectionCommunityCenterDesc: string;
     sectionMuseum: string;
     sectionMuseumDesc: string;
     sectionRecipes: string;
     sectionRecipesDesc: string;
+  };
+  modal: {
+    eventTypes: {
+      festival: string;
+      birthday: string;
+      special: string;
+      fishing: string;
+      librero: string;
+      vendor: string;
+      crop: string;
+    };
+    birthdayOf: string;
+    day: string;
+    favoriteGifts: string;
+    viewFullProfile: string;
+    location: string;
+    time: string;
   };
 }
 
@@ -123,6 +145,31 @@ const translations: Record<Language, TranslationDict> = {
       today: "Hoy",
       filter: "Filtro",
       filterAll: "Todo",
+      close: "Cerrar",
+    },
+    locations: {
+      "Plaza de Pueblo Pelícano": "Plaza de Pueblo Pelícano",
+      "Bosque Tizón": "Bosque Tizón",
+      "Desierto de Calico": "Desierto de Calico",
+      "La Playa": "La Playa",
+      "Bosque Tizón (al lado del río)": "Bosque Tizón (al lado del río)",
+      "Centro de Pueblo Pelícano": "Centro de Pueblo Pelícano",
+      "Bosque al Sur del Rancho": "Bosque al Sur del Rancho",
+    },
+    festivalNames: {
+      "Festival del Huevo": "Festival del Huevo",
+      "Danza de las Flores": "Danza de las Flores",
+      "Festival del Desierto": "Festival del Desierto",
+      "Luau": "Luau",
+      "Derby de la Trucha": "Derby de la Trucha",
+      "Danza de las Medusas Lunares": "Danza de las Medusas Lunares",
+      "Feria de Stardew Valley": "Feria de Stardew Valley",
+      "Víspera de los Espíritus": "Víspera de los Espíritus",
+      "Festival del Hielo": "Festival del Hielo",
+      "Festival del Calamar": "Festival del Calamar",
+      "Mercado Nocturno": "Mercado Nocturno",
+      "Fiesta de la Estrella de Invierno": "Fiesta de la Estrella de Invierno",
+      "Vendedor de Libros": "Vendedor de Libros",
     },
     footer: {
       tagline: "Stardew Guide — El compañero definitivo",
@@ -162,10 +209,29 @@ const translations: Record<Language, TranslationDict> = {
       sectionCalendarDesc: "Eventos, cumpleaños y siembra.",
       sectionVillagers: "Aldeanos",
       sectionVillagersDesc: "Guía de regalos y amistad.",
+      sectionCommunityCenter: "Centro Cívico",
+      sectionCommunityCenterDesc: "Lotes y progreso en salas.",
       sectionMuseum: "Museo",
       sectionMuseumDesc: "Rastreador de donaciones y geodas.",
       sectionRecipes: "Recetas",
       sectionRecipesDesc: "Recetario y formas de obtención.",
+    },
+    modal: {
+      eventTypes: {
+        festival: "Festival",
+        birthday: "Cumpleaños",
+        special: "Evento Especial",
+        fishing: "Evento de Pesca",
+        librero: "Vendedor de Libros",
+        vendor: "Comerciante",
+        crop: "Cultivo",
+      },
+      birthdayOf: "Cumpleaños de {name}",
+      day: "Día",
+      favoriteGifts: "🎁 Regalos Favoritos",
+      viewFullProfile: "Ver Perfil Completo",
+      location: "Lugar",
+      time: "Horario",
     },
   },
   en: {
@@ -204,6 +270,31 @@ const translations: Record<Language, TranslationDict> = {
       today: "Today",
       filter: "Filter",
       filterAll: "All",
+      close: "Close",
+    },
+    locations: {
+      "Plaza de Pueblo Pelícano": "Pelican Town Square",
+      "Bosque Tizón": "Cindersap Forest",
+      "Desierto de Calico": "Calico Desert",
+      "La Playa": "The Beach",
+      "Bosque Tizón (al lado del río)": "Cindersap Forest (river)",
+      "Centro de Pueblo Pelícano": "Pelican Town Center",
+      "Bosque al Sur del Rancho": "Forest south of the Ranch",
+    },
+    festivalNames: {
+      "Festival del Huevo": "Egg Festival",
+      "Danza de las Flores": "Flower Dance",
+      "Festival del Desierto": "Desert Festival",
+      "Luau": "Luau",
+      "Derby de la Trucha": "Trout Derby",
+      "Danza de las Medusas Lunares": "Moonlight Jellies Dance",
+      "Feria de Stardew Valley": "Stardew Valley Fair",
+      "Víspera de los Espíritus": "Spirit's Eve",
+      "Festival del Hielo": "Festival of Ice",
+      "Festival del Calamar": "SquidFest",
+      "Mercado Nocturno": "Night Market",
+      "Fiesta de la Estrella de Invierno": "Winter Star Feast",
+      "Vendedor de Libros": "Bookseller",
     },
     footer: {
       tagline: "Stardew Guide — Ultimate Companion",
@@ -243,10 +334,29 @@ const translations: Record<Language, TranslationDict> = {
       sectionCalendarDesc: "Events, birthdays and crops.",
       sectionVillagers: "Villagers",
       sectionVillagersDesc: "Gifts and friendship guide.",
+      sectionCommunityCenter: "Community Center",
+      sectionCommunityCenterDesc: "Bundles and room progress.",
       sectionMuseum: "Museum",
       sectionMuseumDesc: "Donation tracker and geodes.",
       sectionRecipes: "Recipes",
       sectionRecipesDesc: "Cookbook and crafting.",
+    },
+    modal: {
+      eventTypes: {
+        festival: "Festival",
+        birthday: "Birthday",
+        special: "Special Event",
+        fishing: "Fishing Event",
+        librero: "Bookseller",
+        vendor: "Traveling Cart",
+        crop: "Crop",
+      },
+      birthdayOf: "{name}'s Birthday",
+      day: "Day",
+      favoriteGifts: "🎁 Favorite Gifts",
+      viewFullProfile: "View Full Profile",
+      location: "Location",
+      time: "Time",
     },
   },
   pt: {
@@ -287,6 +397,31 @@ const translations: Record<Language, TranslationDict> = {
       today: "Hoje",
       filter: "Filtro",
       filterAll: "Tudo",
+      close: "Fechar",
+    },
+    locations: {
+      "Plaza de Pueblo Pelícano": "Praça da Vila Pelicanos",
+      "Bosque Tizón": "Floresta Cinzaseiva",
+      "Desierto de Calico": "Deserto de Calico",
+      "La Playa": "A Praia",
+      "Bosque Tizón (al lado del río)": "Floresta Cinzaseiva (rio)",
+      "Centro de Pueblo Pelícano": "Centro da Vila Pelicanos",
+      "Bosque al Sur del Rancho": "Floresta ao Sul do Rancho",
+    },
+    festivalNames: {
+      "Festival del Huevo": "Festival do Ovo",
+      "Danza de las Flores": "Dança das Flores",
+      "Festival del Desierto": "Festival do Deserto",
+      "Luau": "Luau",
+      "Derby de la Trucha": "Torneio de Pesca",
+      "Danza de las Medusas Lunares": "Dança das Águas-Vivas Lunares",
+      "Feria de Stardew Valley": "Feira de Stardew",
+      "Víspera de los Espíritus": "Véspera dos Espíritos",
+      "Festival del Hielo": "Festival do Gelo",
+      "Festival del Calamar": "Festival das Lulas",
+      "Mercado Nocturno": "Mercado Noturno",
+      "Fiesta de la Estrella de Invierno": "Festa da Estrela",
+      "Vendedor de Libros": "Vendedor de Livros",
     },
     footer: {
       tagline: "Stardew Guide — O companheiro definitivo",
@@ -326,10 +461,29 @@ const translations: Record<Language, TranslationDict> = {
       sectionCalendarDesc: "Eventos, aniversários e colheitas.",
       sectionVillagers: "Aldeões",
       sectionVillagersDesc: "Guia de presentes e amizade.",
+      sectionCommunityCenter: "Centro Comunitário",
+      sectionCommunityCenterDesc: "Conjuntos e progresso das salas.",
       sectionMuseum: "Museu",
       sectionMuseumDesc: "Rastreador de doações e geodes.",
       sectionRecipes: "Receitas",
       sectionRecipesDesc: "Livro de receitas e artesanato.",
+    },
+    modal: {
+      eventTypes: {
+        festival: "Festival",
+        birthday: "Aniversário",
+        special: "Evento Especial",
+        fishing: "Evento de Pesca",
+        librero: "Vendedor de Livros",
+        vendor: "Comerciante",
+        crop: "Colheita",
+      },
+      birthdayOf: "Aniversário de {name}",
+      day: "Dia",
+      favoriteGifts: "🎁 Presentes Favoritos",
+      viewFullProfile: "Ver Perfil Completo",
+      location: "Local",
+      time: "Horário",
     },
   },
   fr: {
@@ -370,6 +524,31 @@ const translations: Record<Language, TranslationDict> = {
       today: "Aujourd'hui",
       filter: "Filtre",
       filterAll: "Tous",
+      close: "Fermer",
+    },
+    locations: {
+      "Plaza de Pueblo Pelícano": "Place de Pélican Ville",
+      "Bosque Tizón": "Forêt Sève-Cendreuse",
+      "Desierto de Calico": "Désert de Calico",
+      "La Playa": "La Plage",
+      "Bosque Tizón (al lado del río)": "Forêt Sève-Cendreuse (rivière)",
+      "Centro de Pueblo Pelícano": "Centre de Pélican Ville",
+      "Bosque al Sur del Rancho": "Forêt au sud du Ranch",
+    },
+    festivalNames: {
+      "Festival del Huevo": "Fête des Œufs",
+      "Danza de las Flores": "Danse des Fleurs",
+      "Festival del Desierto": "Festival du Désert",
+      "Luau": "Luau",
+      "Derby de la Trucha": "Derby de la Truite",
+      "Danza de las Medusas Lunares": "Danse des Méduses",
+      "Feria de Stardew Valley": "Foire de Stardew",
+      "Víspera de los Espíritus": "Fête des Esprits",
+      "Festival del Hielo": "Fête de la Glace",
+      "Festival del Calamar": "Fête du Calmar",
+      "Mercado Nocturno": "Marché Nocturne",
+      "Fiesta de la Estrella de Invierno": "Fête de l'Étoile",
+      "Vendedor de Libros": "Vendeur de Livres",
     },
     footer: {
       tagline: "Stardew Guide — Le compagnon ultime",
@@ -409,10 +588,29 @@ const translations: Record<Language, TranslationDict> = {
       sectionCalendarDesc: "Événements, anniversaires et cultures.",
       sectionVillagers: "Villageois",
       sectionVillagersDesc: "Guide des cadeaux et d'amitié.",
+      sectionCommunityCenter: "Centre Communautaire",
+      sectionCommunityCenterDesc: "Paquets et progression des salles.",
       sectionMuseum: "Musée",
       sectionMuseumDesc: "Suivi des donations et géodes.",
       sectionRecipes: "Recettes",
       sectionRecipesDesc: "Livre de recettes et artisanat.",
+    },
+    modal: {
+      eventTypes: {
+        festival: "Festival",
+        birthday: "Anniversaire",
+        special: "Événement Spécial",
+        fishing: "Événement de Pêche",
+        librero: "Vendeur de Livres",
+        vendor: "Marchand Ambu.",
+        crop: "Culture",
+      },
+      birthdayOf: "Anniversaire de {name}",
+      day: "Jour",
+      favoriteGifts: "🎁 Cadeaux Préférés",
+      viewFullProfile: "Voir Profil Complet",
+      location: "Lieu",
+      time: "Heure",
     },
   },
 };

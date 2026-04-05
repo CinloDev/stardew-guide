@@ -3,6 +3,8 @@
 import { Modal } from "@/components/ui/Modal";
 import type { FestivalEvent } from "@/data/festivals";
 import villagersData from "@/data/villagers.json";
+import getTranslations from "@/lib/i18n";
+import { useGameStore } from "@/store/useGameStore";
 import Image from "next/image";
 import Link from "next/link";
 import type { CalendarEvent, CalendarEventType } from "../utils/getSeasonEvents";
@@ -14,42 +16,35 @@ interface CalendarEventModalProps {
 
 const EVENT_CONFIG: Record<
   CalendarEventType,
-  { icon: string; unoptimized?: boolean; label: string; color: string }
+  { icon: string; unoptimized?: boolean; color: string }
 > = {
   festival: {
     icon: "/images/events/flag.gif",
     unoptimized: true,
-    label: "Festival",
     color: "text-rose-700 bg-rose-50 border-rose-200",
   },
   birthday: {
     icon: "/images/ui/cake.png",
-    label: "Cumpleaños",
     color: "text-pink-600 bg-pink-50/50 border-pink-100",
   },
   special: {
     icon: "/images/events/star.png",
-    label: "Evento Especial",
     color: "text-purple-700 bg-purple-50 border-purple-200",
   },
   fishing: {
     icon: "/images/events/hook.png",
-    label: "Evento de Pesca",
     color: "text-blue-700 bg-blue-50 border-blue-200",
   },
   librero: {
     icon: "/images/events/librero.webp",
-    label: "Vendedor de Libros",
     color: "text-amber-700 bg-amber-50 border-amber-200",
   },
   vendor: {
     icon: "/images/events/traveling.webp",
-    label: "Comerciante",
     color: "text-emerald-700 bg-emerald-50 border-emerald-200",
   },
   crop: {
     icon: "/images/events/star.png",
-    label: "Cultivo",
     color: "text-green-700 bg-green-50 border-green-200",
   },
 };
@@ -72,11 +67,11 @@ const EVENT_BANNERS: Record<string, string> = {
   "Tienda de Krobus": "/images/events/Krobus_Root.webp",
 };
 
-const SEASON_LABELS: Record<string, string> = {
-  spring: "🌸 Primavera",
-  summer: "☀️ Verano",
-  fall: "🍂 Otoño",
-  winter: "❄️ Invierno",
+const SEASON_EMOJIS: Record<string, string> = {
+  spring: "🌸",
+  summer: "☀️",
+  fall: "🍂",
+  winter: "❄️",
 };
 
 const SEASON_THEMES: Record<
@@ -167,6 +162,9 @@ const TEXT_COLORS: Record<string, string> = {
 };
 
 export function CalendarEventModal({ event, onClose }: CalendarEventModalProps) {
+  const language = useGameStore((state) => state.language);
+  const t = getTranslations(language);
+
   if (!event) return null;
 
   const config = EVENT_CONFIG[event.type];
@@ -191,10 +189,11 @@ export function CalendarEventModal({ event, onClose }: CalendarEventModalProps) 
   return (
     <Modal
       open={!!event}
-      title={isBirthday ? `Cumpleaños de ${event.name}` : event.name}
+      title={isBirthday ? t.modal.birthdayOf.replace("{name}", event.name) : t.festivalNames[event.name as keyof typeof t.festivalNames] || event.name}
       onClose={onClose}
       className={`${modalBg} border-[3px] ${modalBorder} shadow-2xl transition-all duration-300`}
       titleClassName={modalText}
+      closeText={t.common.close}
     >
       <div className="flex flex-col gap-4">
         {/* Banner image */}
@@ -228,10 +227,10 @@ export function CalendarEventModal({ event, onClose }: CalendarEventModalProps) 
             <span
               className={`inline-block rounded-full border px-2.5 py-0.5 text-xs font-semibold shadow-sm ${isBirthday && birthdayTheme ? `${birthdayTheme.text} ${birthdayTheme.badgeBg} ${birthdayTheme.badgeBorder}` : config.color}`}
             >
-              {config.label}
+              {t.modal.eventTypes[event.type as keyof typeof t.modal.eventTypes]}
             </span>
             <p className="mt-1 text-sm font-medium text-stone-700">
-              {SEASON_LABELS[event.season]} · Día {event.day}
+              {SEASON_EMOJIS[event.season]} {t.home.seasons[event.season as keyof typeof t.home.seasons]} · {t.modal.day} {event.day}
             </p>
           </div>
         </div>
@@ -242,7 +241,7 @@ export function CalendarEventModal({ event, onClose }: CalendarEventModalProps) 
           {isBirthday && villager && birthdayTheme && (
             <div className="px-4 py-3">
               <p className="text-[11px] font-semibold uppercase tracking-wide text-stone-400 mb-2">
-                🎁 Regalos Favoritos
+                {t.modal.favoriteGifts}
               </p>
               <div className="flex flex-wrap gap-1.5">
                 {villager.lovedGifts.map((gift) => (
@@ -260,7 +259,7 @@ export function CalendarEventModal({ event, onClose }: CalendarEventModalProps) 
                 className={`mt-4 flex items-center justify-center gap-2 w-full rounded-lg px-4 py-2.5 text-sm font-bold text-white shadow-sm transition-all active:scale-95 ${birthdayTheme.button} ${birthdayTheme.buttonHover}`}
                 onClick={onClose}
               >
-                Ver Perfil Completo
+                {t.modal.viewFullProfile}
                 <span>→</span>
               </Link>
             </div>
@@ -273,16 +272,16 @@ export function CalendarEventModal({ event, onClose }: CalendarEventModalProps) 
                 <span className="text-lg">📍</span>
                 <div>
                   <p className="text-[11px] font-semibold uppercase tracking-wide text-stone-400">
-                    Lugar
+                    {t.modal.location}
                   </p>
-                  <p className="text-sm font-medium text-stone-800">{event.location}</p>
+                  <p className="text-sm font-medium text-stone-800">{t.locations[event.location as keyof typeof t.locations] || event.location}</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 px-4 py-3">
                 <span className="text-lg">🕐</span>
                 <div>
                   <p className="text-[11px] font-semibold uppercase tracking-wide text-stone-400">
-                    Horario
+                    {t.modal.time}
                   </p>
                   <p className="text-sm font-medium text-stone-800">{event.time}</p>
                 </div>

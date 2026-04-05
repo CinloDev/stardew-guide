@@ -11,36 +11,41 @@ const getSeasonStyles = (season: Season) => {
       return {
         bg: "bg-emerald-50/80 border-emerald-100",
         active: "bg-emerald-600 ring-emerald-500/50",
-        dayHover: "hover:bg-emerald-100 hover:text-emerald-700",
+        dayHover: "hover:bg-emerald-200 hover:text-emerald-800",
         dayActive: "bg-emerald-700",
+        navBg: "bg-emerald-100 text-emerald-700",
       };
     case "summer":
       return {
         bg: "bg-amber-50/80 border-amber-100",
         active: "bg-amber-600 ring-amber-500/50",
-        dayHover: "hover:bg-amber-100 hover:text-amber-700",
+        dayHover: "hover:bg-amber-200 hover:text-amber-800",
         dayActive: "bg-amber-700",
+        navBg: "bg-amber-100 text-amber-700",
       };
     case "fall":
       return {
         bg: "bg-orange-50/80 border-orange-100",
         active: "bg-orange-600 ring-orange-500/50",
-        dayHover: "hover:bg-orange-100 hover:text-orange-700",
+        dayHover: "hover:bg-orange-200 hover:text-orange-800",
         dayActive: "bg-orange-700",
+        navBg: "bg-orange-100 text-orange-700",
       };
     case "winter":
       return {
         bg: "bg-blue-50/80 border-blue-100",
         active: "bg-blue-600 ring-blue-500/50",
-        dayHover: "hover:bg-blue-100 hover:text-blue-700",
+        dayHover: "hover:bg-blue-200 hover:text-blue-800",
         dayActive: "bg-blue-700",
+        navBg: "bg-blue-100 text-blue-700",
       };
     default:
       return {
         bg: "bg-white/40 border-white",
         active: "bg-stone-700",
-        dayHover: "hover:bg-stone-100",
+        dayHover: "hover:bg-stone-200",
         dayActive: "bg-stone-700",
+        navBg: "bg-stone-100 text-stone-600",
       };
   }
 };
@@ -99,10 +104,10 @@ export function GameDateSync() {
           <button
             type="button"
             onClick={prevDay}
-            className="flex items-center gap-1.5 rounded-xl border border-stone-200 bg-white/80 px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-stone-500 transition hover:bg-white hover:text-stone-800 active:scale-95"
+            className={`flex items-center gap-1.5 rounded-xl px-3 py-2 text-sm font-bold transition-all shadow-sm sm:shadow-none active:scale-95 ${styles.navBg} ${styles.dayHover}`}
           >
             <span className="text-sm">‹</span>
-            <span className="hidden xs:inline">{t.home.prevDay}</span>
+            <span>{t.home.prevDay}</span>
           </button>
 
           {/* Centered Day Display */}
@@ -164,9 +169,9 @@ export function GameDateSync() {
           <button
             type="button"
             onClick={nextDay}
-            className="flex items-center gap-1.5 rounded-xl border border-stone-200 bg-white/80 px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-stone-500 transition hover:bg-white hover:text-stone-800 active:scale-95"
+            className={`flex items-center gap-1.5 rounded-xl px-3 py-2 text-sm font-bold transition-all shadow-sm sm:shadow-none active:scale-95 ${styles.navBg} ${styles.dayHover}`}
           >
-            <span className="hidden xs:inline">{t.home.nextDay}</span>
+            <span>{t.home.nextDay}</span>
             <span className="text-sm">›</span>
           </button>
         </div>

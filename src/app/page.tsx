@@ -90,6 +90,13 @@ export default function Home() {
       color: "bg-rose-100",
     },
     {
+      title: t.home.sectionCommunityCenter,
+      desc: t.home.sectionCommunityCenterDesc,
+      href: "/items",
+      icon: "🌿",
+      color: "bg-emerald-100",
+    },
+    {
       title: t.home.sectionMuseum,
       desc: t.home.sectionMuseumDesc,
       href: "/museum",
