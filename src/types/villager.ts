@@ -8,4 +8,14 @@ export interface Villager {
   marriageable: boolean;
   address: string;
   family: string[];
+  hatedGifts?: string[];
+  clinicDay?: string;
+  movies?: {
+    loved: string[];
+    lovedConcessions: string[];
+  };
+  heartEvents?: Array<{
+    hearts: number;
+    trigger: string;
+  }>;
 }

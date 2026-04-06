@@ -437,6 +437,40 @@
     "family": [
       "Pierre",
       "Caroline"
+    ],
+    "clinicDay": "Primavera 4",
+    "hatedGifts": [
+      "Clay",
+      "Holly",
+      "Blackberry"
+    ],
+    "movies": {
+      "loved": [
+        "Mysterium",
+        "It Howls In The Rain"
+      ],
+      "lovedConcessions": [
+        "Rock Candy",
+        "Star Cookie"
+      ]
+    },
+    "heartEvents": [
+      {
+        "hearts": 2,
+        "trigger": "Entra a la Tienda de Pierre cualquier día excepto Sábado."
+      },
+      {
+        "hearts": 4,
+        "trigger": "Visita la Montaña en un día lluvioso entre las 12 PM y 7 PM."
+      },
+      {
+        "hearts": 6,
+        "trigger": "Entra a Pueblo Pelícano de noche (9 PM - 12 AM) despues de que no haya llovido."
+      },
+      {
+        "hearts": 8,
+        "trigger": "Después de recibir su carta, entra a la Tienda de Pierre entre 8 PM y 10 PM."
+      }
     ]
   },
   {
