@@ -20,7 +20,7 @@ const EVENT_CONFIG: Record<
   { icon: string; unoptimized?: boolean; color: string }
 > = {
   festival: {
-    icon: "/images/events/flag.gif",
+    icon: "/images/items/flag.gif",
     unoptimized: true,
     color: "text-rose-700 bg-rose-50 border-rose-200",
   },
@@ -29,47 +29,47 @@ const EVENT_CONFIG: Record<
     color: "text-pink-600 bg-pink-50/50 border-pink-100",
   },
   special: {
-    icon: "/images/events/star.png",
+    icon: "/images/items/star.png",
     color: "text-purple-700 bg-purple-50 border-purple-200",
   },
   fishing: {
-    icon: "/images/events/hook.png",
+    icon: "/images/items/hook.png",
     color: "text-blue-700 bg-blue-50 border-blue-200",
   },
   librero: {
-    icon: "/images/events/librero.webp",
+    icon: "/images/items/librero.webp",
     color: "text-amber-700 bg-amber-50 border-amber-200",
   },
   vendor: {
-    icon: "/images/events/traveling.webp",
+    icon: "/images/items/traveling.webp",
     color: "text-emerald-700 bg-emerald-50 border-emerald-200",
   },
   crop: {
-    icon: "/images/events/star.png",
+    icon: "/images/items/star.png",
     color: "text-green-700 bg-green-50 border-green-200",
   },
   tv: {
-    icon: "/images/events/tv.webp",
+    icon: "/images/items/tv.webp",
     unoptimized: true,
     color: "text-rose-700 bg-rose-50 border-rose-200",
   },
 };
 
 const EVENT_BANNERS: Record<string, string> = {
-  "Festival del Huevo": "/images/events/Egg_Festival.webp",
-  "Danza de las Flores": "/images/events/Flower_Festival.webp",
-  "Festival del Desierto": "/images/events/Desert_Festival_INT.webp",
-  Luau: "/images/events/Luau.webp",
-  "Derby de la Trucha": "/images/events/Trout_Derby_International.webp",
-  "Danza de las Medusas Lunares": "/images/events/Dance_Of_The_Moonlight_Jellies.webp",
-  "Feria de Stardew Valley": "/images/events/StardewValleyFair.webp",
-  "Víspera de los Espíritus": "/images/events/Spirits_Eve.webp",
-  "Festival del Hielo": "/images/events/Festival_of_Ice.webp",
-  "Festival del Calamar": "/images/events/SquidFest_International.webp",
-  "Mercado Nocturno": "/images/events/NightMarket.webp",
-  "Fiesta de la Estrella de Invierno": "/images/events/Feast_of_the_Winterstar.webp",
-  "Vendedor de Libros": "/images/events/Bookseller.webp",
-  "Carro Ambulante": "/images/events/cart-trav.webp",
+  "Festival del Huevo": "/images/items/Egg_Festival.webp",
+  "Danza de las Flores": "/images/items/Flower_Festival.webp",
+  "Festival del Desierto": "/images/items/Desert_Festival_INT.webp",
+  Luau: "/images/items/Luau.webp",
+  "Derby de la Trucha": "/images/items/Trout_Derby_International.webp",
+  "Danza de las Medusas Lunares": "/images/items/Dance_Of_The_Moonlight_Jellies.webp",
+  "Feria de Stardew Valley": "/images/items/StardewValleyFair.webp",
+  "Víspera de los Espíritus": "/images/items/Spirits_Eve.webp",
+  "Festival del Hielo": "/images/items/Festival_of_Ice.webp",
+  "Festival del Calamar": "/images/items/SquidFest_International.webp",
+  "Mercado Nocturno": "/images/items/NightMarket.webp",
+  "Fiesta de la Estrella de Invierno": "/images/items/Feast_of_the_Winterstar.webp",
+  "Vendedor de Libros": "/images/items/Bookseller.webp",
+  "Carro Ambulante": "/images/items/cart-trav.webp",
 };
 
 const SEASON_EMOJIS: Record<string, string> = {
@@ -224,7 +224,7 @@ export function CalendarEventModal({ event, onClose }: CalendarEventModalProps) 
         <div className="flex items-center gap-3">
           <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white/80 backdrop-blur-sm border border-stone-200 shadow-inner">
             <Image
-              src={isBirthday && villager ? villager.image : (event.type === "vendor" && event.name === "Tienda de Krobus") ? "/images/villagers/krobus.webp" : config.icon}
+              src={isBirthday && villager ? villager.image : (event.type === "vendor" && event.name === "Tienda de Krobus") ? "/images/items/krobus.webp" : config.icon}
               alt={event.name}
               width={48}
               height={48}
@@ -252,14 +252,17 @@ export function CalendarEventModal({ event, onClose }: CalendarEventModalProps) 
               <p className="text-[11px] font-semibold uppercase tracking-wide text-stone-400 mb-2">
                 {t.modal.favoriteGifts}
               </p>
-              <div className="flex flex-wrap gap-1.5">
-                {villager.lovedGifts.map((gift) => (
-                  <span
-                    key={gift}
-                    className={`rounded-lg px-2.5 py-1 text-[11px] font-medium border ${birthdayTheme.giftBg} ${birthdayTheme.giftText} ${birthdayTheme.giftBorder}`}
-                  >
-                    {gift}
-                  </span>
+              <div className="flex flex-wrap gap-2.5 mt-1">
+                {villager.lovedGifts.slice(0, 4).map((gift) => (
+                  <div key={gift} className={`flex items-center justify-center p-2 rounded-xl border ${birthdayTheme.giftBg} ${birthdayTheme.giftBorder} shadow-sm hover:scale-110 transition-transform`} title={gift}>
+                    <Image
+                      src={`/images/items/${gift.replace(/ /g, "_")}.webp`}
+                      alt={gift}
+                      width={32}
+                      height={32}
+                      className="object-contain drop-shadow-sm"
+                    />
+                  </div>
                 ))}
               </div>
 
@@ -323,7 +326,7 @@ export function CalendarEventModal({ event, onClose }: CalendarEventModalProps) 
             <div className="flex flex-col items-center justify-center p-6 text-center bg-purple-50/30 border-t border-stone-200">
               <div className="relative mb-3 h-20 w-20 overflow-hidden rounded-full bg-white p-2 shadow-inner ring-4 ring-purple-100">
                 <Image
-                  src="/images/events/regador.webp"
+                  src="/images/items/regador.webp"
                   alt="Aspersor de iridio"
                   fill
                   className="object-contain p-3"

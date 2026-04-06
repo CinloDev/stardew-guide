@@ -239,7 +239,7 @@ export default function Home() {
                 })}
                 className={`w-full text-left flex items-center gap-2 rounded-lg p-2 text-xs transition ${isTravelingCart ? "bg-emerald-100 text-emerald-800 font-bold border border-emerald-200 hover:bg-emerald-200 hover:shadow-sm cursor-pointer active:scale-95" : "bg-stone-100 text-stone-400 opacity-60 cursor-default"}`}
               >
-                <Image src="/images/events/traveling.webp" alt="Vendedora Ambulante" width={16} height={16} className={`h-4 w-4 ${isTravelingCart ? "" : "grayscale"}`} />{" "}
+                <Image src="/images/items/traveling.webp" alt="Vendedora Ambulante" width={16} height={16} className={`h-4 w-4 ${isTravelingCart ? "" : "grayscale"}`} />{" "}
                 {isTravelingCart ? t.home.travelingCartOpen : t.home.travelingCartClosed}
               </button>
               <button
@@ -255,7 +255,7 @@ export default function Home() {
                 })}
                 className={`w-full text-left flex items-center gap-2 rounded-lg p-2 text-xs transition ${isKrobus ? "bg-purple-100 text-purple-800 font-bold border border-purple-200 hover:bg-purple-200 hover:shadow-sm cursor-pointer active:scale-95" : "bg-stone-100 text-stone-400 opacity-60 cursor-default"}`}
               >
-                <Image src="/images/villagers/krobus.webp" alt="Krobus" width={16} height={16} className={`h-4 w-4 rounded-full ${isKrobus ? "" : "grayscale"}`} />{" "}
+                <Image src="/images/items/krobus.webp" alt="Krobus" width={16} height={16} className={`h-4 w-4 rounded-full ${isKrobus ? "" : "grayscale"}`} />{" "}
                 {isKrobus ? t.home.krobusOpen : t.home.krobusClosed}
               </button>
               <button

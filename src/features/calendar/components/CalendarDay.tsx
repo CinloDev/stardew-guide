@@ -19,14 +19,14 @@ interface CalendarDayProps {
 
 function getBirthdayPortrait(name: string): string {
   const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-  return `/images/villagers/${slug}.webp`;
+  return `/images/items/${slug}.webp`;
 }
 
 const EVENT_ICONS: Record<string, { src: string; unoptimized?: boolean }> = {
-  festival: { src: "/images/events/flag.gif", unoptimized: true },
-  special: { src: "/images/events/star.png" },
-  fishing: { src: "/images/events/hook.png" },
-  librero: { src: "/images/events/librero.webp" },
+  festival: { src: "/images/items/flag.gif", unoptimized: true },
+  special: { src: "/images/items/star.png" },
+  fishing: { src: "/images/items/hook.png" },
+  librero: { src: "/images/items/librero.webp" },
 };
 
 type CalendarItem =
@@ -63,7 +63,7 @@ export function CalendarDay({
       type: "vendor",
       data: {
         name: "La Reina de la Salsa (TV)",
-        icon: "/images/events/tv.webp",
+        icon: "/images/items/tv.webp",
         vendorData: {
           type: "tv",
           season,
@@ -77,7 +77,7 @@ export function CalendarDay({
       type: "vendor",
       data: {
         name: "Tienda de Krobus",
-        icon: "/images/villagers/krobus.webp",
+        icon: "/images/items/krobus.webp",
         vendorData: {
           type: "vendor",
           season,
@@ -93,7 +93,7 @@ export function CalendarDay({
       type: "vendor",
       data: {
         name: "Carro Ambulante",
-        icon: "/images/events/traveling.webp",
+        icon: "/images/items/traveling.webp",
         vendorData: {
           type: "vendor",
           season,
@@ -160,7 +160,7 @@ export function CalendarDay({
                     className="cursor-pointer hover:scale-110 transition-transform block"
                   >
                     <Image
-                      src={EVENT_ICONS[item.data.type]?.src || "/images/events/flag.gif"}
+                      src={EVENT_ICONS[item.data.type]?.src || "/images/items/flag.gif"}
                       alt={item.data.name}
                       width={44}
                       height={44}
