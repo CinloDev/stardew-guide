@@ -11,7 +11,7 @@ export interface BirthdayEvent {
 export const birthdays: BirthdayEvent[] = villagersData.map((villager) => {
   const parts = villager.birthday.split(" ");
   const season = parts[0].toLowerCase() as Season;
-  const day = parseInt(parts[1], 10);
+  const day = Number.parseInt(parts[1], 10);
 
   return {
     type: "birthday",
