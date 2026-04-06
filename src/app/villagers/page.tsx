@@ -2,7 +2,7 @@
 
 import { SearchBar } from "@/components/common/SearchBar";
 import villagersData from "@/data/villagers.json";
-import { GiftCard } from "@/features/gifts/components/GiftCard";
+import { VillagerCard } from "./components/VillagerCard";
 import { searchVillagersByGift } from "@/features/gifts/utils/giftLogic";
 import { getTranslations } from "@/lib/i18n";
 import type { Villager } from "@/types/villager";
@@ -22,11 +22,11 @@ export default function VillagersPage() {
         <p className="mt-2 text-sm text-stone-700">{t.pages.villagers.description}</p>
       </header>
 
-      <SearchBar value={query} onChange={setQuery} placeholder="Buscar aldeano o regalo..." />
+      <SearchBar value={query} onChange={setQuery} placeholder="Buscar aldeano por nombre..." />
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((villager) => (
-          <GiftCard key={villager.id} villager={villager} />
+          <VillagerCard key={villager.id} villager={villager} />
         ))}
       </div>
     </section>

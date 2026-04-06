@@ -3,33 +3,87 @@
     "id": "kent",
     "name": "Kent",
     "birthday": "Spring 4",
-    "lovedGifts": ["Fiddlehead Risotto", "Roasted Hazelnuts"],
-    "likedGifts": ["Eggs", "Fruit"],
-    "image": "/images/villagers/kent.webp"
+    "lovedGifts": [
+      "Daffodil",
+      "Dwarvish Safety Manual",
+      "Fiddlehead Risotto",
+      "Roasted Hazelnuts"
+    ],
+    "likedGifts": [
+      "Eggs",
+      "Fruit"
+    ],
+    "image": "/images/items/kent.webp",
+    "marriageable": false,
+    "address": "Calle del Sauce, 1",
+    "family": [
+      "Jodi",
+      "Sam",
+      "Vincent"
+    ]
   },
   {
     "id": "lewis",
     "name": "Lewis",
     "birthday": "Spring 7",
-    "lovedGifts": ["Autumn's Bounty", "Glazed Yams", "Green Tea", "Hot Pepper"],
-    "likedGifts": ["Daffodil", "Eggplant"],
-    "image": "/images/villagers/lewis.webp"
+    "lovedGifts": [
+      "Autumn's Bounty",
+      "Glazed Yams",
+      "Green Tea",
+      "Hot Pepper"
+    ],
+    "likedGifts": [
+      "Daffodil",
+      "Eggplant"
+    ],
+    "image": "/images/items/lewis.webp",
+    "marriageable": false,
+    "address": "Mansión del alcalde",
+    "family": []
   },
   {
     "id": "vincent",
     "name": "Vincent",
     "birthday": "Spring 10",
-    "lovedGifts": ["Cranberry Candy", "Grape", "Pink Cake", "Snail"],
-    "likedGifts": ["Coconut", "Daffodil"],
-    "image": "/images/villagers/vincent.webp"
+    "lovedGifts": [
+      "Cranberry Candy",
+      "Grape",
+      "Pink Cake",
+      "Snail"
+    ],
+    "likedGifts": [
+      "Coconut",
+      "Daffodil"
+    ],
+    "image": "/images/items/vincent.webp",
+    "marriageable": false,
+    "address": "Calle del Sauce, 1",
+    "family": [
+      "Kent",
+      "Jodi",
+      "Sam"
+    ]
   },
   {
     "id": "haley",
     "name": "Haley",
     "birthday": "Spring 14",
-    "lovedGifts": ["Coconut", "Fruit Salad", "Pink Cake", "Sunflower"],
-    "likedGifts": ["Daffodil", "All Fruit"],
-    "image": "/images/villagers/haley.webp"
+    "lovedGifts": [
+      "Coconut",
+      "Fruit Salad",
+      "Pink Cake",
+      "Sunflower"
+    ],
+    "likedGifts": [
+      "Daffodil",
+      "All Fruit"
+    ],
+    "image": "/images/items/haley.webp",
+    "marriageable": true,
+    "address": "Calle del Sauce, 2",
+    "family": [
+      "Emily"
+    ]
   },
   {
     "id": "pam",
@@ -44,24 +98,60 @@
       "Pale Ale",
       "Pepper Poppers"
     ],
-    "likedGifts": ["Daffodil", "Eggs"],
-    "image": "/images/villagers/pam.webp"
+    "likedGifts": [
+      "Daffodil",
+      "Eggs"
+    ],
+    "image": "/images/items/pam.webp",
+    "marriageable": false,
+    "address": "Tráiler",
+    "family": [
+      "Penny"
+    ]
   },
   {
     "id": "shane",
     "name": "Shane",
     "birthday": "Spring 20",
-    "lovedGifts": ["Beer", "Hot Pepper", "Pepper Poppers", "Pizza"],
-    "likedGifts": ["Eggs", "Fruit"],
-    "image": "/images/villagers/shane.webp"
+    "lovedGifts": [
+      "Beer",
+      "Hot Pepper",
+      "Pepper Poppers",
+      "Pizza"
+    ],
+    "likedGifts": [
+      "Eggs",
+      "Fruit"
+    ],
+    "image": "/images/items/shane.webp",
+    "marriageable": true,
+    "address": "Rancho de Marnie",
+    "family": [
+      "Marnie",
+      "Jas"
+    ]
   },
   {
     "id": "pierre",
     "name": "Pierre",
     "birthday": "Spring 26",
-    "lovedGifts": ["Fried Calamari"],
-    "likedGifts": ["Daffodil", "Eggplant"],
-    "image": "/images/villagers/pierre.webp"
+    "lovedGifts": [
+      "Price Catalogue",
+      "Daffodil",
+      "Dandelion",
+      "Fried Calamari"
+    ],
+    "likedGifts": [
+      "Daffodil",
+      "Eggplant"
+    ],
+    "image": "/images/items/pierre.webp",
+    "marriageable": false,
+    "address": "Tienda local Pierre's",
+    "family": [
+      "Caroline",
+      "Abigail"
+    ]
   },
   {
     "id": "emily",
@@ -78,24 +168,58 @@
       "Topaz",
       "Wool"
     ],
-    "likedGifts": ["Quartz", "Daffodil"],
-    "image": "/images/villagers/emily.webp"
+    "likedGifts": [
+      "Quartz",
+      "Daffodil"
+    ],
+    "image": "/images/items/emily.webp",
+    "marriageable": true,
+    "address": "Calle del Sauce, 2",
+    "family": [
+      "Haley"
+    ]
   },
   {
     "id": "jas",
     "name": "Jas",
     "birthday": "Summer 4",
-    "lovedGifts": ["Fairy Rose", "Pink Cake", "Plum Pudding"],
-    "likedGifts": ["Coconut", "Daffodil"],
-    "image": "/images/villagers/jas.webp"
+    "lovedGifts": [
+      "ancient Doll",
+      "Fairy Box",
+      "Fairy Rose",
+      "Pink Cake",
+      "Plum Pudding"
+    ],
+    "likedGifts": [
+      "Coconut",
+      "Daffodil"
+    ],
+    "image": "/images/items/jas.webp",
+    "marriageable": false,
+    "address": "Rancho de Marnie",
+    "family": [
+      "Marnie",
+      "Shane"
+    ]
   },
   {
     "id": "gus",
     "name": "Gus",
     "birthday": "Summer 8",
-    "lovedGifts": ["Diamond", "Escargot", "Fish Taco", "Orange"],
-    "likedGifts": ["Daffodil", "Fruit"],
-    "image": "/images/villagers/gus.webp"
+    "lovedGifts": [
+      "Diamond",
+      "Escargot",
+      "Fish Taco",
+      "Orange"
+    ],
+    "likedGifts": [
+      "Daffodil",
+      "Fruit"
+    ],
+    "image": "/images/items/gus.webp",
+    "marriageable": false,
+    "address": "El Salón Fruta Estelar",
+    "family": []
   },
   {
     "id": "maru",
@@ -112,32 +236,87 @@
       "Rhubarb Pie",
       "Strawberry"
     ],
-    "likedGifts": ["Copper Bar", "Iron Bar"],
-    "image": "/images/villagers/maru.webp"
+    "likedGifts": [
+      "Copper Bar",
+      "Iron Bar"
+    ],
+    "image": "/images/items/maru.webp",
+    "marriageable": true,
+    "address": "Carpintería",
+    "family": [
+      "Robin",
+      "Demetrius",
+      "Sebastian"
+    ]
   },
   {
     "id": "alex",
     "name": "Alex",
     "birthday": "Summer 13",
-    "lovedGifts": ["Complete Breakfast", "Salmon Dinner"],
-    "likedGifts": ["Eggs", "All Fruit"],
-    "image": "/images/villagers/alex.webp"
+    "lovedGifts": [
+      "Jack Be Nimble",
+      "Field Snack",
+      "Dinosaur Egg",
+      "Complete Breakfast",
+      "Salmon Dinner"
+    ],
+    "likedGifts": [
+      "Eggs",
+      "All Fruit"
+    ],
+    "image": "/images/items/alex.webp",
+    "marriageable": true,
+    "address": "Calle del Sauce, 1",
+    "family": [
+      "Evelyn",
+      "George"
+    ]
   },
   {
     "id": "sam",
     "name": "Sam",
     "birthday": "Summer 17",
-    "lovedGifts": ["Cactus Fruit", "Maple Bar", "Pizza", "Tigerseye"],
-    "likedGifts": ["Eggs", "Fruit"],
-    "image": "/images/villagers/sam.webp"
+    "lovedGifts": [
+      "Cactus Fruit",
+      "Maple Bar",
+      "Pizza",
+      "Tigerseye"
+    ],
+    "likedGifts": [
+      "Eggs",
+      "Fruit"
+    ],
+    "image": "/images/items/sam.webp",
+    "marriageable": true,
+    "address": "Calle del Sauce, 1",
+    "family": [
+      "Jodi",
+      "Kent",
+      "Vincent"
+    ]
   },
   {
     "id": "demetrius",
     "name": "Demetrius",
     "birthday": "Summer 19",
-    "lovedGifts": ["Bean Hotpot", "Ice Cream", "Rice Pudding", "Strawberry"],
-    "likedGifts": ["Fruit", "Eggs"],
-    "image": "/images/villagers/demetrius.webp"
+    "lovedGifts": [
+      "Bean Hotpot",
+      "Ice Cream",
+      "Rice Pudding",
+      "Strawberry"
+    ],
+    "likedGifts": [
+      "Fruit",
+      "Eggs"
+    ],
+    "image": "/images/items/demetrius.webp",
+    "marriageable": false,
+    "address": "Carpintería",
+    "family": [
+      "Robin",
+      "Maru",
+      "Sebastian"
+    ]
   },
   {
     "id": "dwarf",
@@ -153,8 +332,14 @@
       "Ruby",
       "Topaz"
     ],
-    "likedGifts": ["Quartz", "Cave Carrot"],
-    "image": "/images/villagers/dwarf.webp"
+    "likedGifts": [
+      "Quartz",
+      "Cave Carrot"
+    ],
+    "image": "/images/items/dwarf.webp",
+    "marriageable": false,
+    "address": "Las minas",
+    "family": []
   },
   {
     "id": "willy",
@@ -170,8 +355,14 @@
       "Sea Cucumber",
       "Sturgeon"
     ],
-    "likedGifts": ["All Fish", "Daffodil"],
-    "image": "/images/villagers/willy.webp"
+    "likedGifts": [
+      "All Fish",
+      "Daffodil"
+    ],
+    "image": "/images/items/willy.webp",
+    "marriageable": false,
+    "address": "Tienda de pesca",
+    "family": []
   },
   {
     "id": "penny",
@@ -187,8 +378,16 @@
       "Sandfish",
       "Tom Kha Soup"
     ],
-    "likedGifts": ["Milk", "Dandelion"],
-    "image": "/images/villagers/penny.webp"
+    "likedGifts": [
+      "Milk",
+      "Dandelion"
+    ],
+    "image": "/images/items/penny.webp",
+    "marriageable": true,
+    "address": "Tráiler",
+    "family": [
+      "Pam"
+    ]
   },
   {
     "id": "jodi",
@@ -203,8 +402,18 @@
       "Rhubarb Pie",
       "Vegetable Medley"
     ],
-    "likedGifts": ["Eggs", "Milk"],
-    "image": "/images/villagers/jodi.webp"
+    "likedGifts": [
+      "Eggs",
+      "Milk"
+    ],
+    "image": "/images/items/jodi.webp",
+    "marriageable": false,
+    "address": "Calle del Sauce, 1",
+    "family": [
+      "Kent",
+      "Sam",
+      "Vincent"
+    ]
   },
   {
     "id": "abigail",
@@ -218,40 +427,103 @@
       "Pufferfish",
       "Spicy Eel"
     ],
-    "likedGifts": ["Quartz", "Fairy Rose"],
-    "image": "/images/villagers/abigail.webp"
+    "likedGifts": [
+      "Quartz",
+      "Fairy Rose"
+    ],
+    "image": "/images/items/abigail.webp",
+    "marriageable": true,
+    "address": "Tienda local Pierre's",
+    "family": [
+      "Pierre",
+      "Caroline"
+    ]
   },
   {
     "id": "sandy",
     "name": "Sandy",
     "birthday": "Fall 15",
-    "lovedGifts": ["Crocus", "Daffodil", "Sweet Pea"],
-    "likedGifts": ["All Fruit", "All Foraged"],
-    "image": "/images/villagers/sandy.webp"
+    "lovedGifts": [
+      "Mango Sticky Rice",
+      "Crocus",
+      "Daffodil",
+      "Sweet Pea"
+    ],
+    "likedGifts": [
+      "All Fruit",
+      "All Foraged"
+    ],
+    "image": "/images/items/sandy.webp",
+    "marriageable": false,
+    "address": "El Oasis",
+    "family": []
   },
   {
     "id": "marnie",
     "name": "Marnie",
     "birthday": "Fall 18",
-    "lovedGifts": ["Diamond", "Farmer's Lunch", "Pink Cake", "Pumpkin Pie", "Quartz"],
-    "likedGifts": ["Eggs", "Milk"],
-    "image": "/images/villagers/marnie.webp"
+    "lovedGifts": [
+      "Diamond",
+      "Farmer's Lunch",
+      "Pink Cake",
+      "Pumpkin Pie",
+      "Quartz"
+    ],
+    "likedGifts": [
+      "Eggs",
+      "Milk"
+    ],
+    "image": "/images/items/marnie.webp",
+    "marriageable": false,
+    "address": "Rancho de Marnie",
+    "family": [
+      "Jas",
+      "Shane"
+    ]
   },
   {
     "id": "robin",
     "name": "Robin",
     "birthday": "Fall 21",
-    "lovedGifts": ["Goat Cheese", "Peach", "Spaghetti"],
-    "likedGifts": ["Daffodil", "Eggs"],
-    "image": "/images/villagers/robin.webp"
+    "lovedGifts": [
+      "Woody's Secret",
+      "Goat Cheese",
+      "Peach",
+      "Spaghetti"
+    ],
+    "likedGifts": [
+      "Daffodil",
+      "Eggs"
+    ],
+    "image": "/images/items/robin.webp",
+    "marriageable": false,
+    "address": "Carpintería",
+    "family": [
+      "Demetrius",
+      "Maru",
+      "Sebastian"
+    ]
   },
   {
     "id": "george",
     "name": "George",
     "birthday": "Fall 24",
-    "lovedGifts": ["Fried Mushroom", "Leek"],
-    "likedGifts": ["Daffodil", "Eggplant"],
-    "image": "/images/villagers/george.webp"
+    "lovedGifts": [
+      "Daffodil",
+      "Fried Mushroom",
+      "Leek"
+    ],
+    "likedGifts": [
+      "Daffodil",
+      "Eggplant"
+    ],
+    "image": "/images/items/george.webp",
+    "marriageable": false,
+    "address": "Calle del Sauce, 1",
+    "family": [
+      "Evelyn",
+      "Alex"
+    ]
   },
   {
     "id": "krobus",
@@ -265,56 +537,144 @@
       "Void Mayonnaise",
       "Wild Horseradish"
     ],
-    "likedGifts": ["Quartz", "All Fish"],
-    "image": "/images/villagers/krobus.webp"
+    "likedGifts": [
+      "Quartz",
+      "All Fish"
+    ],
+    "image": "/images/items/krobus.webp",
+    "marriageable": false,
+    "address": "Las cloacas",
+    "family": []
   },
   {
     "id": "linus",
     "name": "Linus",
     "birthday": "Winter 3",
-    "lovedGifts": ["Blueberry Tart", "Cactus Fruit", "Coconut", "Dish o' The Sea", "Yam"],
-    "likedGifts": ["All Fruit", "All Foraged"],
-    "image": "/images/villagers/linus.webp"
+    "lovedGifts": [
+      "Blueberry Tart",
+      "Cactus Fruit",
+      "Coconut",
+      "Dish o' The Sea",
+      "Yam"
+    ],
+    "likedGifts": [
+      "All Fruit",
+      "All Foraged"
+    ],
+    "image": "/images/items/linus.webp",
+    "marriageable": false,
+    "address": "Tienda de campaña",
+    "family": []
   },
   {
     "id": "caroline",
     "name": "Caroline",
     "birthday": "Winter 7",
-    "lovedGifts": ["Fish Taco", "Green Tea", "Summer Spangle", "Tropical Curry"],
-    "likedGifts": ["Daffodil", "Tea Leaves"],
-    "image": "/images/villagers/caroline.webp"
+    "lovedGifts": [
+      "Fish Taco",
+      "Green Tea",
+      "Summer Spangle",
+      "Tropical Curry"
+    ],
+    "likedGifts": [
+      "Daffodil",
+      "Tea Leaves"
+    ],
+    "image": "/images/items/caroline.webp",
+    "marriageable": false,
+    "address": "Tienda local Pierre's",
+    "family": [
+      "Pierre",
+      "Abigail"
+    ]
   },
   {
     "id": "sebastian",
     "name": "Sebastian",
     "birthday": "Winter 10",
-    "lovedGifts": ["Frozen Tear", "Obsidian", "Pumpkin Soup", "Sashimi", "Void Egg"],
-    "likedGifts": ["Quartz", "Coffee"],
-    "image": "/images/villagers/sebastian.webp"
+    "lovedGifts": [
+      "Frozen Tear",
+      "Obsidian",
+      "Pumpkin Soup",
+      "Sashimi",
+      "Void Egg"
+    ],
+    "likedGifts": [
+      "Quartz",
+      "Coffee"
+    ],
+    "image": "/images/items/sebastian.webp",
+    "marriageable": true,
+    "address": "Carpintería",
+    "family": [
+      "Robin",
+      "Demetrius",
+      "Maru"
+    ]
   },
   {
     "id": "harvey",
     "name": "Harvey",
     "birthday": "Winter 14",
-    "lovedGifts": ["Coffee", "Pickles", "Super Meal", "Truffle Oil", "Wine"],
-    "likedGifts": ["Fruit", "Wine"],
-    "image": "/images/villagers/harvey.webp"
+    "lovedGifts": [
+      "wine",
+      "Coffee",
+      "Pickles",
+      "Super Meal",
+      "Truffle Oil",
+      "Wine"
+    ],
+    "likedGifts": [
+      "Fruit",
+      "Wine"
+    ],
+    "image": "/images/items/harvey.webp",
+    "marriageable": true,
+    "address": "Clínica médica",
+    "family": []
   },
   {
     "id": "wizard",
     "name": "Wizard",
     "birthday": "Winter 17",
-    "lovedGifts": ["Purple Mushroom", "Solar Essence", "Super Cucumber", "Void Essence"],
-    "likedGifts": ["Quartz", "All Foraged"],
-    "image": "/images/villagers/wizard.webp"
+    "lovedGifts": [
+      "Purple Mushroom",
+      "Solar Essence",
+      "Super Cucumber",
+      "Void Essence"
+    ],
+    "likedGifts": [
+      "Quartz",
+      "All Foraged"
+    ],
+    "image": "/images/items/wizard.webp",
+    "marriageable": false,
+    "address": "Torre del mago",
+    "family": []
   },
   {
     "id": "evelyn",
     "name": "Evelyn",
     "birthday": "Winter 20",
-    "lovedGifts": ["Beet", "Chocolate Cake", "Diamond", "Fairy Rose", "Stuffing", "Tulip"],
-    "likedGifts": ["Daffodil", "Milk"],
-    "image": "/images/villagers/evelyn.webp"
+    "lovedGifts": [
+      "Beet",
+      "Chocolate Cake",
+      "Diamond",
+      "Fairy Rose",
+      "Stuffing",
+      "Tulip"
+    ],
+    "likedGifts": [
+      "Daffodil",
+      "Milk"
+    ],
+    "image": "/images/items/evelyn.webp",
+    "marriageable": false,
+    "address": "Calle del Sauce, 1",
+    "family": [
+      "George",
+      "Alex"
+    ]
   },
   {
     "id": "leah",
@@ -329,8 +689,14 @@
       "Vegetable Medley",
       "Wine"
     ],
-    "likedGifts": ["Driftwood", "Vegetables"],
-    "image": "/images/villagers/leah.webp"
+    "likedGifts": [
+      "Driftwood",
+      "Vegetables"
+    ],
+    "image": "/images/items/leah.webp",
+    "marriageable": true,
+    "address": "Cabaña de Leah",
+    "family": []
   },
   {
     "id": "clint",
@@ -349,15 +715,33 @@
       "Ruby",
       "Topaz"
     ],
-    "likedGifts": ["Copper Bar", "Iron Bar"],
-    "image": "/images/villagers/clint.webp"
+    "likedGifts": [
+      "Copper Bar",
+      "Iron Bar"
+    ],
+    "image": "/images/items/clint.webp",
+    "marriageable": false,
+    "address": "Herrería",
+    "family": []
   },
   {
     "id": "leo",
     "name": "Leo",
     "birthday": "Summer 26",
-    "lovedGifts": ["Ostrich Egg", "Mango", "Duck Feather", "Poi"],
-    "likedGifts": ["Maki Roll", "Fried Egg", "Omelet"],
-    "image": "/images/villagers/leo.webp"
+    "lovedGifts": [
+      "Ostrich Egg",
+      "Mango",
+      "Duck Feather",
+      "Poi"
+    ],
+    "likedGifts": [
+      "Maki Roll",
+      "Fried Egg",
+      "Omelet"
+    ],
+    "image": "/images/items/leo.webp",
+    "marriageable": false,
+    "address": "Isla Jengibre",
+    "family": []
   }
 ]

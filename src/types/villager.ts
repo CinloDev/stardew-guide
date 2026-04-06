@@ -5,4 +5,7 @@ export interface Villager {
   lovedGifts: string[];
   likedGifts: string[];
   image?: string;
+  marriageable: boolean;
+  address: string;
+  family: string[];
 }
