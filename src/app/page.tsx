@@ -72,7 +72,7 @@ export default function Home() {
   // Vendor Logic based on Manual day
   const isTravelingCart = day % 7 === 5 || day % 7 === 0;
   const isKrobus = day % 7 === 5;
-  const isQueenOfSauce = day % 7 === 0 || day % 7 === 3;
+  const isQueenOfSauce = day % 7 === 0;
 
   const sections = [
     {
@@ -226,22 +226,51 @@ export default function Home() {
               {t.home.vendorsTitle}
             </h3>
             <div className="mt-1 space-y-2">
-              <div
-                className={`flex items-center gap-2 rounded-lg p-2 text-xs transition ${isTravelingCart ? "bg-emerald-100 text-emerald-800 font-bold border border-emerald-200" : "bg-stone-100 text-stone-400 opacity-60"}`}
+              <button
+                type="button"
+                disabled={!isTravelingCart}
+                onClick={() => setSelectedEvent({
+                  type: "vendor",
+                  season,
+                  day,
+                  name: "Carro Ambulante",
+                  location: "Bosque Tizón",
+                  time: "6:00 AM – 8:00 PM",
+                })}
+                className={`w-full text-left flex items-center gap-2 rounded-lg p-2 text-xs transition ${isTravelingCart ? "bg-emerald-100 text-emerald-800 font-bold border border-emerald-200 hover:bg-emerald-200 hover:shadow-sm cursor-pointer active:scale-95" : "bg-stone-100 text-stone-400 opacity-60 cursor-default"}`}
               >
-                <span>🚚</span>{" "}
+                <Image src="/images/events/traveling.webp" alt="Vendedora Ambulante" width={16} height={16} className={`h-4 w-4 ${isTravelingCart ? "" : "grayscale"}`} />{" "}
                 {isTravelingCart ? t.home.travelingCartOpen : t.home.travelingCartClosed}
-              </div>
-              <div
-                className={`flex items-center gap-2 rounded-lg p-2 text-xs transition ${isKrobus ? "bg-purple-100 text-purple-800 font-bold border border-purple-200" : "bg-stone-100 text-stone-400 opacity-60"}`}
+              </button>
+              <button
+                type="button"
+                disabled={!isKrobus}
+                onClick={() => setSelectedEvent({
+                  type: "vendor",
+                  season,
+                  day,
+                  name: "Tienda de Krobus",
+                  location: "Las Alcantarillas",
+                  time: "12:00 PM – 10:00 PM",
+                })}
+                className={`w-full text-left flex items-center gap-2 rounded-lg p-2 text-xs transition ${isKrobus ? "bg-purple-100 text-purple-800 font-bold border border-purple-200 hover:bg-purple-200 hover:shadow-sm cursor-pointer active:scale-95" : "bg-stone-100 text-stone-400 opacity-60 cursor-default"}`}
               >
-                <span> sewer </span> {isKrobus ? t.home.krobusOpen : t.home.krobusClosed}
-              </div>
-              <div
-                className={`flex items-center gap-2 rounded-lg p-2 text-xs transition ${isQueenOfSauce ? "bg-rose-100 text-rose-800 font-bold border border-rose-200" : "bg-stone-100 text-stone-400 opacity-60"}`}
+                <Image src="/images/villagers/krobus.webp" alt="Krobus" width={16} height={16} className={`h-4 w-4 rounded-full ${isKrobus ? "" : "grayscale"}`} />{" "}
+                {isKrobus ? t.home.krobusOpen : t.home.krobusClosed}
+              </button>
+              <button
+                type="button"
+                disabled={!isQueenOfSauce}
+                onClick={() => setSelectedEvent({
+                  type: "tv",
+                  season,
+                  day,
+                  name: "La Reina de la Salsa",
+                })}
+                className={`w-full text-left flex items-center gap-2 rounded-lg p-2 text-xs transition ${isQueenOfSauce ? "bg-rose-100 text-rose-800 font-bold border border-rose-200 hover:bg-rose-200 hover:shadow-sm cursor-pointer active:scale-95" : "bg-stone-100 text-stone-400 opacity-60 cursor-default"}`}
               >
-                <span>📺</span> {isQueenOfSauce ? t.home.queenOfSauceOpen : t.home.queenOfSauceClosed}
-              </div>
+                <span className="text-sm">📺</span> {isQueenOfSauce ? t.home.queenOfSauceOpen : t.home.queenOfSauceClosed}
+              </button>
             </div>
           </div>
         </div>

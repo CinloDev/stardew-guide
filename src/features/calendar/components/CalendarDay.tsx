@@ -43,7 +43,7 @@ export function CalendarDay({
   season,
   onEventClick,
 }: CalendarDayProps) {
-  const isQueenDay = showVendors && (day % 7 === 3 || day % 7 === 0);
+  const isQueenDay = showVendors && day % 7 === 0;
   const isTravelingCartDay = showVendors && (day % 7 === 5 || day % 7 === 0);
   const isKrobusDay = showVendors && day % 7 === 5;
 
@@ -60,15 +60,24 @@ export function CalendarDay({
 
   if (isQueenDay)
     allItems.push({
-      type: "vendor-tv",
-      data: { name: "Reina de la Salsa (TV)", icon: "/images/events/tv.webp" },
+      type: "vendor",
+      data: {
+        name: "La Reina de la Salsa (TV)",
+        icon: "/images/events/tv.webp",
+        vendorData: {
+          type: "tv",
+          season,
+          day,
+          name: "La Reina de la Salsa",
+        },
+      },
     });
   if (isKrobusDay)
     allItems.push({
       type: "vendor",
       data: {
         name: "Tienda de Krobus",
-        icon: "/images/events/regador.webp",
+        icon: "/images/villagers/krobus.webp",
         vendorData: {
           type: "vendor",
           season,

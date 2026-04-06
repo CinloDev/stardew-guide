@@ -2,6 +2,7 @@
 
 import { Modal } from "@/components/ui/Modal";
 import type { FestivalEvent } from "@/data/festivals";
+import { getQueenOfSauceRecipe } from "@/data/queenOfSauce";
 import villagersData from "@/data/villagers.json";
 import getTranslations from "@/lib/i18n";
 import { useGameStore } from "@/store/useGameStore";
@@ -47,6 +48,11 @@ const EVENT_CONFIG: Record<
     icon: "/images/events/star.png",
     color: "text-green-700 bg-green-50 border-green-200",
   },
+  tv: {
+    icon: "/images/events/tv.webp",
+    unoptimized: true,
+    color: "text-rose-700 bg-rose-50 border-rose-200",
+  },
 };
 
 const EVENT_BANNERS: Record<string, string> = {
@@ -64,7 +70,6 @@ const EVENT_BANNERS: Record<string, string> = {
   "Fiesta de la Estrella de Invierno": "/images/events/Feast_of_the_Winterstar.webp",
   "Vendedor de Libros": "/images/events/Bookseller.webp",
   "Carro Ambulante": "/images/events/cart-trav.webp",
-  "Tienda de Krobus": "/images/events/Krobus_Root.webp",
 };
 
 const SEASON_EMOJIS: Record<string, string> = {
@@ -163,6 +168,7 @@ const TEXT_COLORS: Record<string, string> = {
 
 export function CalendarEventModal({ event, onClose }: CalendarEventModalProps) {
   const language = useGameStore((state) => state.language);
+  const year = useGameStore((state) => state.year);
   const t = getTranslations(language);
 
   if (!event) return null;
@@ -170,7 +176,10 @@ export function CalendarEventModal({ event, onClose }: CalendarEventModalProps) 
   const config = EVENT_CONFIG[event.type];
   const banner = EVENT_BANNERS[event.name];
   const isBirthday = event.type === "birthday";
+  const isTV = event.type === "tv";
+  const isKrobus = event.type === "vendor" && event.name.includes("Krobus");
   const villager = isBirthday ? villagersData.find((v) => v.name === event.name) : null;
+  const tvRecipe = isTV ? getQueenOfSauceRecipe(year, event.season, event.day) : null;
 
   // Extract the base color (e.g., 'rose', 'purple') from the config classes
   const colorMatch = config.color.match(/text-(\w+)-/);
@@ -215,19 +224,19 @@ export function CalendarEventModal({ event, onClose }: CalendarEventModalProps) 
         <div className="flex items-center gap-3">
           <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white/80 backdrop-blur-sm border border-stone-200 shadow-inner">
             <Image
-              src={isBirthday && villager ? villager.image : config.icon}
+              src={isBirthday && villager ? villager.image : (event.type === "vendor" && event.name === "Tienda de Krobus") ? "/images/villagers/krobus.webp" : config.icon}
               alt={event.name}
               width={48}
               height={48}
-              className={`h-10 w-10 object-contain ${isBirthday ? "rounded-md" : ""}`}
+              className={`h-10 w-10 object-contain ${isBirthday || (event.type === "vendor" && event.name === "Tienda de Krobus") ? "rounded-md" : ""}`}
               unoptimized={config.unoptimized}
             />
           </div>
           <div>
             <span
-              className={`inline-block rounded-full border px-2.5 py-0.5 text-xs font-semibold shadow-sm ${isBirthday && birthdayTheme ? `${birthdayTheme.text} ${birthdayTheme.badgeBg} ${birthdayTheme.badgeBorder}` : config.color}`}
+              className={`inline-block rounded-full border px-2.5 py-0.5 text-xs font-semibold shadow-sm ${isBirthday && birthdayTheme ? `${birthdayTheme.text} ${birthdayTheme.badgeBg} ${birthdayTheme.badgeBorder}` : config?.color}`}
             >
-              {t.modal.eventTypes[event.type as keyof typeof t.modal.eventTypes]}
+              {isTV ? t.home.queenOfSauceOpen.replace("📺", "").trim() : t.modal.eventTypes[event.type as keyof typeof t.modal.eventTypes]}
             </span>
             <p className="mt-1 text-sm font-medium text-stone-700">
               {SEASON_EMOJIS[event.season]} {t.home.seasons[event.season as keyof typeof t.home.seasons]} · {t.modal.day} {event.day}
@@ -255,7 +264,7 @@ export function CalendarEventModal({ event, onClose }: CalendarEventModalProps) 
               </div>
 
               <Link
-                href={`/villagers#villager-${villager.id}`}
+                href={`/villagers/${villager.id}`}
                 className={`mt-4 flex items-center justify-center gap-2 w-full rounded-lg px-4 py-2.5 text-sm font-bold text-white shadow-sm transition-all active:scale-95 ${birthdayTheme.button} ${birthdayTheme.buttonHover}`}
                 onClick={onClose}
               >
@@ -266,7 +275,7 @@ export function CalendarEventModal({ event, onClose }: CalendarEventModalProps) 
           )}
 
           {/* Festival Location/Time Section */}
-          {!isBirthday && "location" in event && (
+          {!isBirthday && !isTV && "location" in event && (
             <>
               <div className="flex items-center gap-3 px-4 py-3">
                 <span className="text-lg">📍</span>
@@ -287,6 +296,49 @@ export function CalendarEventModal({ event, onClose }: CalendarEventModalProps) 
                 </div>
               </div>
             </>
+          )}
+
+          {/* TV Recipe Section */}
+          {isTV && tvRecipe && (
+            <div className="flex flex-col items-center justify-center p-6 text-center bg-rose-50/30">
+              <div className="relative mb-3 h-20 w-20 overflow-hidden rounded-full bg-white p-2 shadow-inner ring-4 ring-rose-100">
+                <Image
+                  src={tvRecipe.image}
+                  alt={tvRecipe.es}
+                  fill
+                  className="object-contain p-3"
+                />
+              </div>
+              <p className="text-[11px] font-bold uppercase tracking-widest text-rose-400">
+                {language === "es" ? "Receta de Hoy" : "Today's Recipe"}
+              </p>
+              <h4 className="mt-1 text-2xl font-black text-rose-700">
+                {tvRecipe[language === "es" ? "es" : "en"]}
+              </h4>
+            </div>
+          )}
+
+          {/* Krobus Special Item Section */}
+          {isKrobus && (
+            <div className="flex flex-col items-center justify-center p-6 text-center bg-purple-50/30 border-t border-stone-200">
+              <div className="relative mb-3 h-20 w-20 overflow-hidden rounded-full bg-white p-2 shadow-inner ring-4 ring-purple-100">
+                <Image
+                  src="/images/events/regador.webp"
+                  alt="Aspersor de iridio"
+                  fill
+                  className="object-contain p-3"
+                />
+              </div>
+              <p className="text-[11px] font-bold uppercase tracking-widest text-purple-400">
+                {language === "es" ? "Objeto Especial (Viernes)" : "Special Item (Friday)"}
+              </p>
+              <h4 className="mt-1 text-2xl font-black text-purple-700">
+                {language === "es" ? "Regador de Iridio" : "Iridium Sprinkler"}
+              </h4>
+              <p className="mt-2 inline-flex items-center gap-1 rounded-full bg-purple-100 px-3 py-1 text-xs font-bold text-purple-800">
+                💰 10,000g
+              </p>
+            </div>
           )}
         </div>
       </div>
