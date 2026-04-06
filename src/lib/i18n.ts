@@ -105,6 +105,15 @@ export interface TranslationDict {
     location: string;
     time: string;
   };
+  villagerCard: {
+    single: string;
+    livesIn: string;
+    family: string;
+    livesAlone: string;
+    loves: string;
+    viewProfile: string;
+    noPhoto: string;
+  };
 }
 
 const translations: Record<Language, TranslationDict> = {
@@ -155,6 +164,26 @@ const translations: Record<Language, TranslationDict> = {
       "Bosque Tizón (al lado del río)": "Bosque Tizón (al lado del río)",
       "Centro de Pueblo Pelícano": "Centro de Pueblo Pelícano",
       "Bosque al Sur del Rancho": "Bosque al Sur del Rancho",
+      "Calle del Sauce, 1": "Calle del Sauce, 1",
+      "Calle del Sauce, 2": "Calle del Sauce, 2",
+      "Cabaña de Elliott": "Cabaña de Elliott",
+      "Clínica médica": "Clínica médica",
+      "Carpintería": "Carpintería",
+      "Rancho de Marnie": "Rancho de Marnie",
+      "Tienda local Pierre's": "Tienda local Pierre's",
+      "Cabaña de Leah": "Cabaña de Leah",
+      "Tráiler": "Tráiler",
+      "Herrería": "Herrería",
+      "Las minas": "Las minas",
+      "El Salón Fruta Estelar": "El Salón Fruta Estelar",
+      "Las cloacas": "Las cloacas",
+      "Isla Jengibre": "Isla Jengibre",
+      "Mansión del alcalde": "Mansión del alcalde",
+      "Tienda de campaña": "Tienda de campaña",
+      "MercaJoja": "MercaJoja",
+      "El Oasis": "El Oasis",
+      "Tienda de pesca": "Tienda de pesca",
+      "Torre del mago": "Torre del mago",
     },
     festivalNames: {
       "Festival del Huevo": "Festival del Huevo",
@@ -233,6 +262,15 @@ const translations: Record<Language, TranslationDict> = {
       location: "Lugar",
       time: "Horario",
     },
+    villagerCard: {
+      single: "Soltero/a",
+      livesIn: "Vive en",
+      family: "Familia y Casa",
+      livesAlone: "Vive solo/a",
+      loves: "Le encanta",
+      viewProfile: "Ver Perfil",
+      noPhoto: "Sin foto",
+    },
   },
   en: {
     nav: {
@@ -280,6 +318,26 @@ const translations: Record<Language, TranslationDict> = {
       "Bosque Tizón (al lado del río)": "Cindersap Forest (river)",
       "Centro de Pueblo Pelícano": "Pelican Town Center",
       "Bosque al Sur del Rancho": "Forest south of the Ranch",
+      "Calle del Sauce, 1": "1 Willow Lane",
+      "Calle del Sauce, 2": "2 Willow Lane",
+      "Cabaña de Elliott": "Elliott's Cabin",
+      "Clínica médica": "Harvey's Clinic",
+      "Carpintería": "Carpenter's Shop",
+      "Rancho de Marnie": "Marnie's Ranch",
+      "Tienda local Pierre's": "Pierre's General Store",
+      "Cabaña de Leah": "Leah's Cottage",
+      "Tráiler": "Trailer",
+      "Herrería": "Blacksmith",
+      "Las minas": "The Mines",
+      "El Salón Fruta Estelar": "The Stardrop Saloon",
+      "Las cloacas": "The Sewers",
+      "Isla Jengibre": "Ginger Island",
+      "Mansión del alcalde": "Mayor's Manor",
+      "Tienda de campaña": "Tent",
+      "MercaJoja": "JojaMart",
+      "El Oasis": "The Oasis",
+      "Tienda de pesca": "Fish Shop",
+      "Torre del mago": "Wizard's Tower",
     },
     festivalNames: {
       "Festival del Huevo": "Egg Festival",
@@ -358,6 +416,15 @@ const translations: Record<Language, TranslationDict> = {
       location: "Location",
       time: "Time",
     },
+    villagerCard: {
+      single: "Single",
+      livesIn: "Lives in",
+      family: "Family & Roommates",
+      livesAlone: "Lives alone",
+      loves: "Loves",
+      viewProfile: "View Profile",
+      noPhoto: "No photo",
+    },
   },
   pt: {
     nav: {
@@ -407,6 +474,26 @@ const translations: Record<Language, TranslationDict> = {
       "Bosque Tizón (al lado del río)": "Floresta Cinzaseiva (rio)",
       "Centro de Pueblo Pelícano": "Centro da Vila Pelicanos",
       "Bosque al Sur del Rancho": "Floresta ao Sul do Rancho",
+      "Calle del Sauce, 1": "Rua do Salgueiro, 1",
+      "Calle del Sauce, 2": "Rua do Salgueiro, 2",
+      "Cabaña de Elliott": "Cabana do Elliott",
+      "Clínica médica": "Clínica do Harvey",
+      "Carpintería": "Carpintaria",
+      "Rancho de Marnie": "Rancho da Marnie",
+      "Tienda local Pierre's": "Armazém do Pierre",
+      "Cabaña de Leah": "Cabana da Leah",
+      "Tráiler": "Trailer",
+      "Herrería": "Ferreiro",
+      "Las minas": "As Minas",
+      "El Salón Fruta Estelar": "Saloon Fruta Estrelar",
+      "Las cloacas": "Os Esgotos",
+      "Isla Jengibre": "Ilha Gengibre",
+      "Mansión del alcalde": "Mansão do Prefeito",
+      "Tienda de campaña": "Tenda",
+      "MercaJoja": "Mercado Joja",
+      "El Oasis": "O Oásis",
+      "Tienda de pesca": "Peixaria",
+      "Torre del mago": "Torre do Mago",
     },
     festivalNames: {
       "Festival del Huevo": "Festival do Ovo",
@@ -485,6 +572,15 @@ const translations: Record<Language, TranslationDict> = {
       location: "Local",
       time: "Horário",
     },
+    villagerCard: {
+      single: "Solteiro/a",
+      livesIn: "Mora em",
+      family: "Família e Casa",
+      livesAlone: "Mora sozinho/a",
+      loves: "Adora",
+      viewProfile: "Ver Perfil",
+      noPhoto: "Sem foto",
+    },
   },
   fr: {
     nav: {
@@ -534,6 +630,26 @@ const translations: Record<Language, TranslationDict> = {
       "Bosque Tizón (al lado del río)": "Forêt Sève-Cendreuse (rivière)",
       "Centro de Pueblo Pelícano": "Centre de Pélican Ville",
       "Bosque al Sur del Rancho": "Forêt au sud du Ranch",
+      "Calle del Sauce, 1": "1 Chemin des Saules",
+      "Calle del Sauce, 2": "2 Chemin des Saules",
+      "Cabaña de Elliott": "Cabane d'Elliott",
+      "Clínica médica": "Clinique d'Harvey",
+      "Carpintería": "Scierie",
+      "Rancho de Marnie": "Ranch de Marnie",
+      "Tienda local Pierre's": "Magasin de Pierre",
+      "Cabaña de Leah": "Cabane de Leah",
+      "Tráiler": "Caravane",
+      "Herrería": "Forgeron",
+      "Las minas": "Les Mines",
+      "El Salón Fruta Estelar": "Saloon du Fruit Étoilé",
+      "Las cloacas": "Les Égouts",
+      "Isla Jengibre": "Île Gingembre",
+      "Mansión del alcalde": "Manoir du Maire",
+      "Tienda de campaña": "Tente",
+      "MercaJoja": "Marché Joja",
+      "El Oasis": "L'Oasis",
+      "Tienda de pesca": "Poissonnerie",
+      "Torre del mago": "Tour du Sorcier",
     },
     festivalNames: {
       "Festival del Huevo": "Fête des Œufs",
@@ -611,6 +727,15 @@ const translations: Record<Language, TranslationDict> = {
       viewFullProfile: "Voir Profil Complet",
       location: "Lieu",
       time: "Heure",
+    },
+    villagerCard: {
+      single: "Célibataire",
+      livesIn: "Habite à",
+      family: "Famille & Colocs",
+      livesAlone: "Vit seul(e)",
+      loves: "Adore",
+      viewProfile: "Voir Profil",
+      noPhoto: "Pas de photo",
     },
   },
 };
