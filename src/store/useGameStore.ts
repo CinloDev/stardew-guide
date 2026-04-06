@@ -6,9 +6,11 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 interface GameState {
+  year: number;
   season: Season;
   day: number;
   language: Language;
+  setYear: (year: number) => void;
   setSeason: (season: Season) => void;
   setDay: (day: number) => void;
   setLanguage: (language: Language) => void;
@@ -19,9 +21,15 @@ interface GameState {
 export const useGameStore = create<GameState>()(
   persist(
     (set, get) => ({
+      year: 1,
       season: "spring",
       day: 1,
       language: "es",
+
+      setYear: (year) => {
+        const clampedYear = Math.max(year, 1);
+        set({ year: clampedYear });
+      },
 
       setSeason: (season) => set({ season }),
 
@@ -33,26 +41,28 @@ export const useGameStore = create<GameState>()(
       setLanguage: (language) => set({ language }),
 
       nextDay: () => {
-        const { day, season } = get();
+        const { year, day, season } = get();
         if (day < 28) {
           set({ day: day + 1 });
         } else {
           // Rollover to next season
           const currentIndex = SEASONS.indexOf(season);
           const nextIndex = (currentIndex + 1) % SEASONS.length;
-          set({ season: SEASONS[nextIndex], day: 1 });
+          const nextYear = nextIndex === 0 ? year + 1 : year;
+          set({ season: SEASONS[nextIndex], day: 1, year: nextYear });
         }
       },
 
       prevDay: () => {
-        const { day, season } = get();
+        const { year, day, season } = get();
         if (day > 1) {
           set({ day: day - 1 });
         } else {
           // Rollover to previous season
           const currentIndex = SEASONS.indexOf(season);
           const prevIndex = (currentIndex - 1 + SEASONS.length) % SEASONS.length;
-          set({ season: SEASONS[prevIndex], day: 28 });
+          const prevYear = currentIndex === 0 ? Math.max(1, year - 1) : year;
+          set({ season: SEASONS[prevIndex], day: 28, year: prevYear });
         }
       },
     }),

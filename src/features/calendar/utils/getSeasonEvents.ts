@@ -9,9 +9,17 @@ export type CalendarEventType =
   | "special"
   | "fishing"
   | "vendor"
-  | "librero";
+  | "librero"
+  | "tv";
 
-export type CalendarEvent = FestivalEvent | BirthdayEvent;
+export interface TVEvent {
+  type: "tv";
+  season: Season;
+  day: number;
+  name: string;
+}
+
+export type CalendarEvent = FestivalEvent | BirthdayEvent | TVEvent;
 
 export interface EventFilters {
   includeFestivals: boolean;

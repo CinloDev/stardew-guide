@@ -51,9 +51,11 @@ const getSeasonStyles = (season: Season) => {
 };
 
 export function GameDateSync() {
-  const { season, day, language, setSeason, setDay, nextDay, prevDay } = useGameStore();
+  const { year, season, day, language, setSeason, setDay, setYear, nextDay, prevDay } = useGameStore();
   const [isDayPickerOpen, setIsDayPickerOpen] = useState(false);
+  const [isYearPickerOpen, setIsYearPickerOpen] = useState(false);
   const pickerRef = useRef<HTMLDivElement>(null);
+  const yearPickerRef = useRef<HTMLDivElement>(null);
   const styles = getSeasonStyles(season);
   const t = getTranslations(language);
 
@@ -63,12 +65,15 @@ export function GameDateSync() {
       if (pickerRef.current && !pickerRef.current.contains(event.target as Node)) {
         setIsDayPickerOpen(false);
       }
+      if (yearPickerRef.current && !yearPickerRef.current.contains(event.target as Node)) {
+        setIsYearPickerOpen(false);
+      }
     };
-    if (isDayPickerOpen) {
+    if (isDayPickerOpen || isYearPickerOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [isDayPickerOpen]);
+  }, [isDayPickerOpen, isYearPickerOpen]);
 
   return (
     <div
@@ -100,6 +105,61 @@ export function GameDateSync() {
 
         {/* Day & Controls Redesign */}
         <div className="flex items-center gap-1.5 self-center sm:self-auto">
+          {/* Year Picker */}
+          <div className="relative" ref={yearPickerRef}>
+            <button
+              type="button"
+              onClick={() => setIsYearPickerOpen(!isYearPickerOpen)}
+              className="flex min-w-[50px] flex-col items-center rounded-2xl bg-white p-1 shadow-sm ring-1 ring-stone-200 transition hover:ring-amber-400 group"
+            >
+              <span className="text-[10px] font-bold uppercase tracking-widest text-stone-400 group-hover:text-amber-600">
+                Año
+              </span>
+              <span className="text-xl font-black text-stone-800 leading-none">{year}</span>
+            </button>
+
+            {/* Year Picker Dropdown */}
+            {isYearPickerOpen && (
+              <>
+                {/* Backdrop for mobile only */}
+                <div className="fixed inset-0 z-[120] bg-stone-900/10 backdrop-blur-[1px] sm:hidden" />
+
+                <div className="fixed inset-x-4 top-[20%] z-[130] mx-auto w-auto max-w-[240px] rounded-3xl border border-stone-200 bg-white p-5 shadow-2xl animate-in fade-in zoom-in slide-in-from-top-4 duration-300 sm:absolute sm:top-14 sm:-left-3 sm:w-48 sm:rounded-2xl sm:p-3 sm:shadow-2xl">
+                  <div className="mb-3 px-1 text-[10px] font-bold uppercase tracking-widest text-stone-400 sm:mb-2 text-center">
+                    Saltar de Año
+                  </div>
+                  <div className="grid grid-cols-5 gap-2 sm:gap-1">
+                    {Array.from({ length: 10 }, (_, i) => i + 1).map((y) => (
+                      <button
+                        type="button"
+                        key={y}
+                        onClick={() => {
+                          setYear(y);
+                          setIsYearPickerOpen(false);
+                        }}
+                        className={`flex h-9 w-9 items-center justify-center rounded-xl text-sm font-bold transition active:scale-90 sm:h-8 sm:w-8 sm:rounded-lg sm:text-xs ${
+                          year === y
+                            ? `${styles.dayActive} text-white shadow-md`
+                            : `text-stone-600 ${styles.dayHover}`
+                        }`}
+                      >
+                        {y}
+                      </button>
+                    ))}
+                  </div>
+                  {/* Close button for mobile only */}
+                  <button
+                    type="button"
+                    onClick={() => setIsYearPickerOpen(false)}
+                    className="mt-4 w-full rounded-xl bg-stone-100 py-2 text-[10px] font-bold uppercase tracking-wider text-stone-500 sm:hidden"
+                  >
+                    Cerrar
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+
           {/* Previous Day Button */}
           <button
             type="button"
